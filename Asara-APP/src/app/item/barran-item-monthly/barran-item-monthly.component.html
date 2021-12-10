@@ -1,0 +1,22 @@
+<body>
+  <section class="container">
+    <h2>جرد شهري</h2>
+
+    <form (ngSubmit)="getDayData()" class="form-group" [formGroup]="formDay">
+      <label for="this-day">اليوم</label>
+      <input id="this-day" type="date" class="my-day form-control" [value]="getInfo().sumCost" formControlName="day" />
+      <button type="submit" class="btn">عرض</button>
+    </form>
+
+    <ag-grid-angular #agGrid class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+      [rowData]="rowData" [enableRtl]="true">
+    </ag-grid-angular>
+
+    <button type="button" (click)="showDisplayBarren()" class="btn show-total">عرض معلومات عن الجرد</button>
+
+  </section>
+  <app-display-barren *ngIf="openDisplay" [infoBarren]="infoBarren"
+    (openDisplayBarrenEvent)="openDisplayBarren($event)">
+  </app-display-barren>
+
+</body>

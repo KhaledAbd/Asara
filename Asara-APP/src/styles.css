@@ -1,0 +1,371 @@
+@import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css";
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-alpine.css";
+@import "../node_modules/alertifyjs/build/css/alertify.css";
+@import "../node_modules/alertifyjs/build/css/themes/bootstrap.min.css";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Font cairo */
+
+@font-face {
+  font-family: "Cairo";
+  src: url("./assets/font-cairo/Cairo-Black.eot");
+  src: url("./assets/font-cairo/Cairo-Black.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/font-cairo/Cairo-Black.woff2") format("woff2"),
+    url("./assets/font-cairo/Cairo-Black.woff") format("woff"),
+    url("./assets/font-cairo/Cairo-Black.ttf") format("truetype"),
+    url("./assets/font-cairo/Cairo-Black.svg#Cairo-Black") format("svg");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("./assets/font-cairo/Cairo-SemiBold.eot");
+  src: url("./assets/font-cairo/Cairo-SemiBold.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/font-cairo/Cairo-SemiBold.woff2") format("woff2"),
+    url("./assets/font-cairo/Cairo-SemiBold.woff") format("woff"),
+    url("./assets/font-cairo/Cairo-SemiBold.ttf") format("truetype"),
+    url("./assets/font-cairo/Cairo-SemiBold.svg#Cairo-SemiBold") format("svg");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("./assets/font-cairo/Cairo-Bold.eot");
+  src: url("./assets/font-cairo/Cairo-Bold.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/font-cairo/Cairo-Bold.woff2") format("woff2"),
+    url("./assets/font-cairo/Cairo-Bold.woff") format("woff"),
+    url("./assets/font-cairo/Cairo-Bold.ttf") format("truetype"),
+    url("./assets/font-cairo/Cairo-Bold.svg#Cairo-Bold") format("svg");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("./assets/font-cairo/Cairo-Regular.eot");
+  src: url("./assets/font-cairo/Cairo-Regular.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/font-cairo/Cairo-Regular.woff2") format("woff2"),
+    url("./assets/font-cairo/Cairo-Regular.woff") format("woff"),
+    url("./assets/font-cairo/Cairo-Regular.ttf") format("truetype"),
+    url("./assets/font-cairo/Cairo-Regular.svg#Cairo-Regular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("./assets/font-cairo/Cairo-ExtraLight.eot");
+  src: url("./assets/font-cairo/Cairo-ExtraLight.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/font-cairo/Cairo-ExtraLight.woff2") format("woff2"),
+    url("./assets/font-cairo/Cairo-ExtraLight.woff") format("woff"),
+    url("./assets/font-cairo/Cairo-ExtraLight.ttf") format("truetype"),
+    url("./assets/font-cairo/Cairo-ExtraLight.svg#Cairo-ExtraLight")
+      format("svg");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cairo";
+  src: url("./assets/font-cairo/Cairo-Light.eot");
+  src: url("./assets/font-cairo/Cairo-Light.eot?#iefix")
+      format("embedded-opentype"),
+    url("./assets/font-cairo/Cairo-Light.woff2") format("woff2"),
+    url("./assets/font-cairo/Cairo-Light.woff") format("woff"),
+    url("./assets/font-cairo/Cairo-Light.ttf") format("truetype"),
+    url("./assets/font-cairo/Cairo-Light.svg#Cairo-Light") format("svg");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  height: 100vh;
+  background: url("./assets/bg-g.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  font-family: "Cairo", sans-serif;
+  font-weight: bold;
+  overflow: overlay;
+}
+
+::selection {
+  color: #568098;
+  background-color: #decaca;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  box-shadow: none;
+  background-color: none;
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+  height: 20px;
+  background-color: #142114;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:window-inactive {
+  background: none;
+}
+
+.container {
+  width: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  background-color: rgba(216, 236, 247, 0.2);
+  padding: 20px 30px;
+  border-radius: 20px;
+  /* box-shadow: 0 4px 10px 1px #dfdfdf; */
+}
+
+/* This is for the animation from right to center */
+
+.slideInRight {
+  -webkit-animation-name: slideInRight;
+  animation-name: slideInRight;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes slideInRight {
+  0% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    visibility: visible;
+  }
+  100% {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+/* End rigth animation */
+
+/* This is for the light speed animation from right to center */
+
+.lightSpeedIn {
+  -webkit-animation-name: lightSpeedIn;
+  animation-name: lightSpeedIn;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes lightSpeedIn {
+  0% {
+    -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+    transform: translate3d(100%, 0, 0) skewX(-30deg);
+    opacity: 0;
+  }
+  60% {
+    -webkit-transform: skewX(20deg);
+    transform: skewX(20deg);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: skewX(-5deg);
+    transform: skewX(-5deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+@keyframes lightSpeedIn {
+  0% {
+    -webkit-transform: translate3d(100%, 0, 0) skewX(-30deg);
+    transform: translate3d(100%, 0, 0) skewX(-30deg);
+    opacity: 0;
+  }
+  60% {
+    -webkit-transform: skewX(20deg);
+    transform: skewX(20deg);
+    opacity: 1;
+  }
+  80% {
+    -webkit-transform: skewX(-5deg);
+    transform: skewX(-5deg);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: none;
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* End light speed animation */
+
+/* Start zoom in down animation */
+
+.zoomInDown {
+  -webkit-animation-name: zoomInDown;
+  animation-name: zoomInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes zoomInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+@keyframes zoomInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+    -webkit-animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+  }
+}
+
+/* End zoom in down animation */
+
+/*Start Animation for the  swing-in-back*/
+
+@keyframes swing-in-back {
+  0% {
+    opacity: 0;
+    transform: rotateX(70deg);
+    transform-origin: top;
+  }
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+    transform-origin: top;
+  }
+}
+
+/* End Animation for the  swing-in-back */
+
+/* Start Animation for the jello */
+
+@keyframes jello {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+/* End Animation for the jello */
+
+/* Start Animation for the animation-2 */
+
+@keyframes animation-2 {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+/* End Animation for the animation-2 */
+
+/* Animation for the  Hor.center*/
+
+@keyframes animation-first {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/*End Animation for the  Hor.center*/

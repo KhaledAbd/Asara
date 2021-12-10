@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-Black.eot');
+    src: url('Cairo-Black.eot?#iefix') format('embedded-opentype'),
+        url('Cairo-Black.woff2') format('woff2'),
+        url('Cairo-Black.woff') format('woff'),
+        url('Cairo-Black.ttf') format('truetype'),
+        url('Cairo-Black.svg#Cairo-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-SemiBold.eot');
+    src: url('Cairo-SemiBold.eot?#iefix') format('embedded-opentype'),
+        url('Cairo-SemiBold.woff2') format('woff2'),
+        url('Cairo-SemiBold.woff') format('woff'),
+        url('Cairo-SemiBold.ttf') format('truetype'),
+        url('Cairo-SemiBold.svg#Cairo-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-Bold.eot');
+    src: url('Cairo-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Cairo-Bold.woff2') format('woff2'),
+        url('Cairo-Bold.woff') format('woff'),
+        url('Cairo-Bold.ttf') format('truetype'),
+        url('Cairo-Bold.svg#Cairo-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-Regular.eot');
+    src: url('Cairo-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Cairo-Regular.woff2') format('woff2'),
+        url('Cairo-Regular.woff') format('woff'),
+        url('Cairo-Regular.ttf') format('truetype'),
+        url('Cairo-Regular.svg#Cairo-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-ExtraLight.eot');
+    src: url('Cairo-ExtraLight.eot?#iefix') format('embedded-opentype'),
+        url('Cairo-ExtraLight.woff2') format('woff2'),
+        url('Cairo-ExtraLight.woff') format('woff'),
+        url('Cairo-ExtraLight.ttf') format('truetype'),
+        url('Cairo-ExtraLight.svg#Cairo-ExtraLight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cairo';
+    src: url('Cairo-Light.eot');
+    src: url('Cairo-Light.eot?#iefix') format('embedded-opentype'),
+        url('Cairo-Light.woff2') format('woff2'),
+        url('Cairo-Light.woff') format('woff'),
+        url('Cairo-Light.ttf') format('truetype'),
+        url('Cairo-Light.svg#Cairo-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+

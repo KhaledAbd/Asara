@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-4"></div>
+
+        <div class="col-md-8">
+
+            <div id="myModal" class="modal">
+
+                <div class="modal-content">
+
+                    <i class="fas icon fa-times" (click)="showEvent(false)"></i>
+
+                    <h3 class="text-center" style="margin-bottom: 5%; margin-top: 0;">قائمة الطالبات</h3>
+
+                    <ag-grid-angular #agGrid style="width: 600px; height: 400px" class="ag-theme-alpine agGrid" [gridOptions]="gridOptions" [columnDefs]="columnDefs" [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true">
+                    </ag-grid-angular>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

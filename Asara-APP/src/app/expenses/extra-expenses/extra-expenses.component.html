@@ -1,0 +1,40 @@
+<body>
+  <div class="container">
+    <h3>إضافة مصروفات لفاتورة</h3>
+
+    <form [formGroup]="extraExpensesForm" (ngSubmit)="onSubmit()">
+
+      <div class="add-date">
+        <label for="my-date">التاريخ</label>
+        <input id="my-date" type="date" class="form-control" (change)="search($event)">
+      </div>
+
+      <div class="custom-control form-group">
+        <!-- <label for="paid">القيمة المدفوعة</label> -->
+        <input id="paid" type="number" class="form-control" formControlName="paid" placeholder="أدْخِلْ القيمة المالية"
+          [ngClass]="{ 'is-invalid': extraExpensesForm.get('paid').errors && extraExpensesForm.get('paid').touched }" />
+      </div>
+
+      <div class="custom-control form-group">
+        <!-- <label for="reason">سبب الدفع </label> -->
+        <input id="reason" type="text" class="form-control" formControlName="reason" placeholder="سبب الدفع" [ngClass]="{
+              'is-invalid': extraExpensesForm.get('reason').errors && extraExpensesForm.get('reason').touched }" />
+      </div>
+
+      <div class="custom-control form-group">
+        <button type="submit" class="btn btn-success"
+          [disabled]="extraExpensesForm.errors && extraExpensesForm.touched">إضافة</button>
+      </div>
+    </form>
+
+    <div>
+      <div *ngIf="rowData.length > 0">
+        <div>
+          <ag-grid-angular #agGrid class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+            [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true"> </ag-grid-angular>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>

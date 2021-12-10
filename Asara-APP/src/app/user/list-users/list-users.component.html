@@ -1,0 +1,11 @@
+<div class="container">
+
+  <h2 class="text-center">قائمة المُوظفين</h2>
+
+  <ag-grid-angular #agGrid class="ag-theme-alpine ang-table" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+    [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true"> </ag-grid-angular>
+
+</div>
+
+<app-edit-user *ngIf="open" [user]="user" (userEditEvent)="userEdit($event)" (openEvent)="setOpen($event)">
+</app-edit-user>

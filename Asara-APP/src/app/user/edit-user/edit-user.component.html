@@ -1,0 +1,60 @@
+<div class="row">
+
+  <div class="col-md-4"></div>
+
+  <div class="col-md-4">
+
+    <div id="myModal" class="modal">
+
+      <div class="modal-content">
+
+        <i class="fas icon fa-times" (click)="openNewEvent(false)"></i>
+
+        <h2 class="text-center">تعديل بيانات المُوظف</h2>
+
+        <form [formGroup]="editUserform">
+          <hr />
+
+          <div class="form-group col-10">
+            <label for="user-name">إسمُ المُعرَّف:</label>
+            <input id="user-name" type="text" class="form-control input-new-item" formControlName="username"
+              placeholder="إسم المُعرَّف" readonly />
+          </div>
+
+          <div class="form-group mt-2 col-10">
+            <label for="known-as">إسمُ الشُهرة:</label>
+            <input id="known-as" class="form-control input-new-item" type="text" formControlName="knownAs"
+              placeholder="إسم الشُهرة" readonly />
+          </div>
+
+          <div class="form-group mt-2 col-10">
+            <label for="date-birth"> اخر نشاط:</label>
+            <input id="date-birth" class="form-control input-new-item" type="text" formControlName="lastActive"
+              placeholder="وقت اخر نشاط" readonly />
+          </div>
+
+          <div class="form-group mt-2 col-10">
+            <label for="city">إسمُ المدينة:</label>
+            <input id="city" class="form-control input-new-item" type="text" formControlName="city"
+              placeholder="إسمُ المدينة" readonly />
+          </div>
+
+          <div class="form-group mt-2 col-10">
+            <label for="telephone">الهاتف :</label>
+            <input id="telephone" class="form-control input-new-item" type="text" formControlName="telephone"
+              placeholder="رقم الهاتف" readonly />
+          </div>
+
+          <div class="form-group text-center mt-2">
+            <button type="button" class="btn btn-success" (click)="openNewEvent(false)">غلق</button>
+            <button type="submit" class="btn btn-danger m-2" (click)="delete()">حذف</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-4"></div>
+
+</div>

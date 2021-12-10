@@ -1,0 +1,57 @@
+<body>
+
+  <div class="container">
+    <h3>إضافة مصروفات جديدة</h3>
+
+    <form [formGroup]="expensesForm" (ngSubmit)="onSubmit()">
+
+      <div class="new-sec">
+        <div class="custom-control form-group">
+          <label for="dateOfBill">تاريخ الفاتورة</label>
+          <input type="date" id="dateOfBill" class="form-control" formControlName="dateOfBill" [ngClass]="{ 'is-invalid':
+              dateOfBill.errors &&
+              dateOfBill.touched
+          }" />
+        </div>
+
+        <div class="custom-control form-group">
+          <select class="form-control" name="billType" id="billType" formControlName="billType" [ngClass]="{
+            'is-invalid': billType.errors && billType.touched }" (change)="clientName.enable()">
+            <option value="" selected disabled>اختر نوع الفاتورة</option>
+            <option value="0">فاتورة شراء</option>
+            <option value="1">فاتورة بيع</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="new-sec">
+        <div class="custom-control form-group">
+          <label for="clientName ">اسم العميل</label>
+          <input class="form-control" class="form-control" list="clientName" (keyup)="searchForClient($event)"
+            id="clientName" formControlName="clientName" [ngClass]="{
+            'is-invalid':
+            clientName.errors &&
+            clientName.touched
+          }">
+          <datalist id="clientName">
+            <option *ngFor="let client of clients">{{client}}</option>
+          </datalist>
+        </div>
+
+        <button type="submit" class="btn new-button" [disabled]="expensesForm.invalid || expensesForm.disabled">عرض
+          الفاتورة</button>
+      </div>
+
+    </form>
+
+    <div *ngIf="rowData">
+      <div>
+        <ag-grid-angular #agGrid class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+          [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true"> </ag-grid-angular>
+      </div>
+    </div>
+
+    <app-detail-bill *ngIf="open && bill" [bill]="bill" (openDetailBill)="openEvent($event)"
+      (EditBill)="EditBillEvent($event)"></app-detail-bill>
+  </div>
+</body>
