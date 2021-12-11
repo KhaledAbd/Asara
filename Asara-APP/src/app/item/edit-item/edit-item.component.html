@@ -1,0 +1,57 @@
+<div class="row">
+
+    <div class="col-md-4"></div>
+
+    <div class="col-md-4">
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+
+                <i class="fas icon fa-times" (click)="setOpenEvent(false)"></i>
+                <h2 class="text-center text-align:right">تعديل بيانات الصنف</h2>
+
+                <form [formGroup]="editItemform" (ngSubmit)="update()">
+
+                    <div class="form-group mt-2 col-10">
+                        <label for="name-item">إسم الصنف:</label>
+                        <input id="name-item" type="text" class="form-control" formControlName="name" placeholder="اسم الصنف" />
+                    </div>
+
+                    <div class="form-group mt-2 col-10">
+                        <label for="price-item">السعر:</label>
+                        <input id="price-item" class="form-control" type="number" formControlName="price" placeholder="السعر" />
+                    </div>
+
+                    <div class="form-group mt-2 col-10">
+                        <label for="quantity-item">الكمية:</label>
+                        <input id="quantity-item" class="form-control" type="number" formControlName="quentity" readonly />
+                    </div>
+
+                    <div class="form-group mt-2 col-10">
+                        <label for="measruing-unit">وِحدة القياس:</label>
+                        <select id="measruing-unit" class="form-control" type="text" formControlName="unitId" placeholder="وِحدة القياس">
+                          <option *ngFor="let unit of units" value="{{ unit.id }}" [selected]="unit.id == item.unitNavigation.id">{{ unit.name }}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group mt-2 col-10">
+                        <label for="type-item">النُوع:</label>
+                        <select id="type-item" class="form-control custom-select mt-1" formControlName="type" [ngClass]="{ 'is-invalid': type.errors && type.touched }">
+                              <option value="" disabled selected>أدخِل نوع الصنف</option>
+                              <option value="1">مبيع</option>
+                              <option value="0">مُشترى</option>
+                              <option value="">مبيع ومُشترى</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group text-center mt-2">
+                        <button type="button" class="btn btn-info" (click)="setOpenEvent(false)">غلق</button>
+                        <button type="button" class="btn btn-danger" (click)="delete()">حذف</button>
+                        <button type="submit" class="btn btn-success m-2">تعديل</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4"></div>
+</div>

@@ -1,0 +1,17 @@
+<div class="container lightSpeedIn">
+
+    <div class="row">
+        <div class="col-md-8" style="margin-right: 10%;">
+
+            <h2 class="text-center" style="margin-bottom: 20px; margin-top: 50px;">قائمة الأصناف</h2>
+
+            <ag-grid-angular #agGrid style="width: 700px; height: 400px; margin-right: -40px;" class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs" [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true">
+            </ag-grid-angular>
+        </div>
+
+        <div class="col-md-4"></div>
+
+    </div>
+</div>
+
+<app-edit-item *ngIf="open" (openEvent)="newOpenValue($event)" (itemEditEvent)="changeOnItem($event)" [item]="item"></app-edit-item>

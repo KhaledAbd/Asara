@@ -1,0 +1,54 @@
+<div class="container" style="margin-left: 20%">
+    <div class="row">
+        <form class="col-lg-12" [formGroup]="expensesForm" (ngSubmit)="onSubmit()" style="margin-top: 1px">
+            <div class="row text-center">
+                <h3 class="text-center mb-5">إضافة مصروفات جديدة</h3>
+                <div class="custom-control form-group mt-2 col-4">
+                    <label for="dateOfBill">تاريخ الفاتورة</label>
+                    <input type="date" id="dateOfBill" class="col-2 form-control mt-2 text-center" style="width: 80%; margin-left: auto; margin-right: auto" formControlName="dateOfBill" [ngClass]="{
+              'is-invalid':
+                dateOfBill.errors &&
+                dateOfBill.touched
+            }" />
+                </div>
+                <div class="custom-control form-group mt-2 col-4">
+                    <label for="billType">نوع المصاريف</label>
+                    <select class="col-2 form-control mt-2 text-center" style="width: 70%; margin-left: auto; margin-right: auto" name="billType" id="billType" formControlName="billType" [ngClass]="{
+              'is-invalid':
+                billType.errors &&
+                billType.touched
+            }" (change)="clientName.enable()">
+              <option value="" selected disabled>اختر نوع الفاتورة</option>
+              <option value="0">فاتورة شراء</option>
+              <option value="1">فاتورة بيع</option>
+            </select>
+                </div>
+                <div class="custom-control form-group mt-2 col-4">
+                    <label for="clientName " class="mb-2">اسم العميل</label>
+                    <input class="col-2 form-control mt-2 text-center" style="width: 70%; margin-left: auto; margin-right: auto" class="form-control" list="clientName" (keyup)="searchForClient($event)" id="clientName" formControlName="clientName" placeholder="ادخل اسم العميل"
+                        [ngClass]="{
+              'is-invalid':
+              clientName.errors &&
+              clientName.touched
+            }">
+                    <datalist id="clientName">
+           <option style="text-align: right;" *ngFor="let client of clients">{{client}}</option>
+          </datalist>
+                </div>
+            </div>
+            <button type="submit" class="new-button btn btn-success col-6" style="width: 100%" [disabled]="expensesForm.invalid || expensesForm.disabled">
+        عرض الفاتورة
+      </button>
+        </form>
+        <div *ngIf="rowData">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <ag-grid-angular #agGrid style="width: 760px; height: 400px; margin-top: 5px" class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs" [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true">
+                </ag-grid-angular>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+
+<app-detail-bill *ngIf="open && bill" [bill]="bill" (openDetailBill)="openEvent($event)" (EditBill)="EditBillEvent($event)"></app-detail-bill>

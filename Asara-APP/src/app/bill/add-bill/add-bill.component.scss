@@ -1,0 +1,127 @@
+* {
+    direction: rtl;
+}
+
+button {
+    background-color: Transparent;
+}
+
+.new-button {
+    background-color: #198754;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+}
+
+.container {
+    width: 80%;
+    padding: 60px;
+    background-color: #cecece8f;
+    border: 1px solid rgb(122, 122, 122);
+    border-radius: 20px;
+    margin-top: 5%;
+    animation: swing-in-back 1s ease 0s 1 alternate forwards;
+}
+
+label {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.addIcon {
+    float: left;
+    font-size: 25px;
+    margin-top: 5px;
+    color: darkgreen;
+    background-color: none;
+}
+
+.removeIcon {
+    float: left;
+    font-size: 25px;
+    margin-top: 5px;
+    color: rgb(252, 111, 111);
+}
+
+.addIcon:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+.removeIcon:hover {
+    opacity: .8;
+    cursor: pointer;
+}
+
+#itemForm {
+    margin-top: 100px;
+}
+
+.error {
+    color: red;
+    margin: 2px;
+    font-size: 15px;
+}
+
+.error:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.row {
+    display: flex;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.column {
+    flex: 50%;
+    padding: 5px;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+    outline: none;
+}
+
+th,
+td {
+    text-align: center;
+    padding: 5px;
+    font-size: 13px;
+}
+
+th {
+    margin-right: 20px;
+}
+
+
+
+.myInput {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+}
+
+.circle {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+}
+
+.btn-success {
+    width: 40%;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}

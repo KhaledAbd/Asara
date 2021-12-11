@@ -1,0 +1,98 @@
+* {
+    direction: rtl;
+}
+
+*:focus {
+    border: none;
+    outline: none;
+}
+
+.container {
+    width: 476px;
+    height: auto;
+    margin-top: 4%;
+    background-color: rgba(216, 236, 247, 0.4);
+    padding: 20px 30px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+}
+
+h3 {
+    margin-right: 5%;
+    margin-bottom: 40px;
+    font-size: 23px;
+    text-align: center;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    display: inline-block;
+    width: 100%;
+}
+
+.error[_ngcontent-cyn-c61] {
+    margin-top: 10px;
+}
+
+i {
+    text-align: center;
+}
+
+.addIcon {
+    font-size: 30px;
+    color: darkgreen;
+    float: left;
+    margin: 13px;
+}
+
+.addIcon:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.error {
+    color: rgb(255, 0, 0);
+    /* background-color: rgb(250, 225, 225); */
+    padding: 10px 25px;
+    margin-top: 25px;
+    font-size: 17px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 70px;
+}
+
+.error:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.item {
+    width: 340px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    padding: 10px 30px;
+    text-align: center;
+}
+
+
+/* input {
+    display: inline;
+} */
+
+input[type=text]:focus {
+    box-shadow: 15px rgba(81, 203, 238, 1);
+    border: 1px solid rgba(81, 203, 238, 1);
+}
+
+label {
+    text-indent: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-group input {
+    width: 440px;
+}
