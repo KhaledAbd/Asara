@@ -51,6 +51,7 @@ namespace Asara.API.Controllers
                 user.Telephone = userForUpdateDtos.Telephone;
                 user.KnownAs = userForUpdateDtos.KnownAs;
                 user.DateOfBirth = userForUpdateDtos.DateOfBirth;
+                user.NormalizedUserName = userForUpdateDtos.Username.ToUpper();
                 await dataContext.SaveChangesAsync();
                 isUpdate = true;
 

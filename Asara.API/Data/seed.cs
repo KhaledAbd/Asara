@@ -9,14 +9,6 @@ namespace Asara.API.Data
 {
     public class Seed
     {
-        /*
-        readonly UserManager<User> userManager;
-        readonly RoleManager<Role> roleManager;
-        public Seed(UserManager<User> userManager, RoleManager<Role> roleManager){
-            this.userManager = userManager;
-            this.roleManager = roleManager;
-        }
-        */
         public static void SeedUsers(UserManager<User> userManager, RoleManager<Role> roleManager)
         {
                 if(!userManager.Users.Any()){

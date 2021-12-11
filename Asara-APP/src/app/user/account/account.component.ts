@@ -51,11 +51,13 @@ export class AccountComponent implements OnInit {
                     alertify.success('تم الحذف بنجاح');
                     this.rowData = this.rowData.filter(e => e.id !== p.data.id);
                     if (p.data.isIntial){
-                      this.authService.setMoney(this.user.money - p.data.money);
                       this.user.money -= p.data.money;
+                      this.authService.setMoney(this.user.money);
+                      console.log('sad');
+
                     }else{
-                      this.authService.setMoney(p.data.lastUserMoney);
                       this.user.money = p.data.lastUserMoney;
+                      this.authService.setMoney(p.data.lastUserMoney);
                     }
                   }
                 }, e => {
@@ -109,15 +111,14 @@ export class AccountComponent implements OnInit {
       this.accountService.AddAccount(this.accountForm.value).subscribe(d => {
         if (d.isSaved) {
           this.rowData.push(d.account);
-          this.gridOptions.api.setRowData(this.rowData.reverse());
+          this.gridOptions.api?.setRowData(this.rowData.reverse());
           this.alertify.success('تم الإضافةُ بنجاح');
           if (d.account.isIntial){
-            this.authService.setMoney(this.user.money + d.account.money);
             this.user.money += d.account.money;
-
+            this.authService.setMoney(this.user.money);
           }else{
-            this.authService.setMoney(d.account.money);
             this.user.money = d.account.money;
+            this.authService.setMoney(this.user.money);
           }
           this.accountForm.reset({
             userId: this.user.id,

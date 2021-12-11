@@ -12,29 +12,17 @@
                   <div class="col-lg-12" style="margin-top: 1px;">
 
                       <h2 class="text-center" style="margin-top: 1%; margin-bottom: 5%;" *ngIf="stockBill.type === 1">
-                          مبيعات</h2>
+                          اصناف السحب </h2>
                       <h2 class="text-center" style="margin-top: 1%; margin-bottom: 5%;" *ngIf="stockBill.type === 0">
-                          مُشتريات</h2>
+                         اصناف الإيداع </h2>
 
                       <div class="row text-center">
-                        <div class="custom-control form-group mt-2 col-4">
-                            <label for="stockId">اسم العامل</label>
-                            <input type="text" id="stockId" class="col-2 form-control mt-2 text-center"
-                                style="width: 70%; margin-left: auto; margin-right: auto;" [value]="stockBill.id"
+                        <div class="custom-control form-group">
+                            <label for="worker">اسم العامل</label>
+                            <input type="text" id="worker" class="col-6 form-control mt-2 text-center"
+                                style="width: 70%; margin-left: auto; margin-right: auto;" [value]="stockBill.worker"
                                 readonly>
                         </div>
-                          <div class="custom-control form-group mt-2 col-4">
-                              <label for="id">الرقم الكودى </label>
-                              <input type="text" id="id" class="col-2 form-control mt-2 text-center"
-                                  style="width: 70%; margin-left: auto; margin-right: auto;" [value]="stockBill.id"
-                                  readonly>
-                          </div>              
-                          <!-- <div class="custom-control form-group mt-2 col-4">
-                              <label for="clientName">إسم العميل/المُورد</label>
-                              <input type="text" id="clientName" class="col-2 form-control mt-2 text-center"
-                                  style="width: 70%; margin-left: auto; margin-right: auto;" [value] = "stockBill.clientName" readonly>
-                          </div> -->
-
                       </div>
 
                       <div>

@@ -1,8 +1,21 @@
 * {
-    direction: rtl;
-    box-sizing: border-box;
+  direction: rtl;
+  box-sizing: border-box;
 }
 
-h2{
-    font-size: 26px;
+.container {
+  width: 70%;
+  background-color: transparent;
+}
+
+.ang-table {
+  width: 100% !important;
+  height: 430px;
+}
+
+h2 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 50px;
 }

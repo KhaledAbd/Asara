@@ -18,8 +18,7 @@ export class AddItemComponent implements OnInit {
   itemForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.maxLength(18), Validators.minLength(3)]),
     price: new FormControl('', [Validators.required, Validators.min(0), Validators.max(1000)]),
-    unit: new FormControl('', [Validators.required]),
-    type: new FormControl('', [Validators.required])
+    unit: new FormControl('', [Validators.required])
   }, this.itemIsExist());
   constructor(private itemService: ItemService, private unitService: UnitService, private alertify: AlertifyService) {
     this.itemService.getItems().subscribe(d => {
@@ -44,6 +43,9 @@ export class AddItemComponent implements OnInit {
     return this.itemForm?.get('unit');
   }
   onSubmit(){
+    if(this.itemForm.errors?.exist){
+      this.alertify.error('هذا الصنف موجود بالفعل!!!')
+    }
     if (this.itemForm.valid){
       this.itemService.postItem({
         name: this.name.value,
@@ -65,13 +67,8 @@ export class AddItemComponent implements OnInit {
   setUnit(event: Unit){
     this.units.push(event);
   }
-  get type(){
-    return this.itemForm.get('type');
-  }
   itemIsExist(): ValidatorFn{
-    return (control: AbstractControl): ValidationErrors | null => {  
-      console.log(this.items);
-      console.log(this.name && this.unit && this.items?.filter(i => i.name == this.name.value && i.unitId == +this.unit.value) + 'dasdd');
+    return (control: AbstractControl): ValidationErrors | null => {
       return this.name && this.unit && this.items?.filter(i => i.name == this.name.value && i.unitNavigation.id == +this.unit.value)[0] ? { exist: true } : null;
     };
   }

@@ -13,7 +13,6 @@ export class AuthGuard implements CanActivate {
     if (this.auth.currentUserValue && localStorage.token){
       return true;
     }
-    this.urlrouter.navigateByUrl('/');
     this.auth.logout();
     return false;
   }

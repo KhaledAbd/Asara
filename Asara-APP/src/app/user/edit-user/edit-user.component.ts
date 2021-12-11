@@ -42,20 +42,20 @@ export class EditUserComponent implements OnInit {
   }
   delete() {
     this.alertify.confirm('هل أنت مُتأكد من حذف هذا المُوظف؟', () => {
-      if (this.authService.currentUserValue.id !== this.user.id) {
+      if (this.authService.roleMatch(['Admin'])) {
         this.authService.deleteUser(this.user.id).subscribe(
           d => {
             if (d.isDeleted) {
               this.userEditNewEvent({isDeleted: true, user: this.user});
               this.openNewEvent(false);
               this.alertify.message('تم حذف المُوظف بنجاح');
+            }else{
+              this.alertify.error('أولًا صلِّ على النبي .. ثانيًا أنت مُدير، فبالله عليك ينفع تحذف نفسك؟');
             }
           }, e => {
             console.log(e);
           }
         );
-      } else {
-        this.alertify.error('أولًا صلِّ على النبي .. ثانيًا أنت مُدير، فبالله عليك ينفع تحذف نفسك؟');
       }
     });
 

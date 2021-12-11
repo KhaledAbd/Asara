@@ -9,5 +9,4 @@ export interface Item {
     unitId: number;
     unitNavigation: Unit;
     billItem: BillItem[];
-    type: number;
 }

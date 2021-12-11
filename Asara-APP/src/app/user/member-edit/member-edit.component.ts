@@ -39,7 +39,7 @@ export class MemberEditComponent implements OnInit {
     this.editUserform.get('dateOfBirth').setValue(moment(this.user.dateOfBirth).format('M/D/YYYY'));
     this.formchangePassword = this.formBuilder.group({
       password: new FormControl('', [Validators.required]),
-      newPassword: new FormControl('', [Validators.required]),
+      newPassword: new FormControl('', [Validators.required, Validators.minLength(4)]),
       passwordConfirm: new FormControl('', [Validators.required])
     },
     {validators: MustMatch('newPassword', 'passwordConfirm')});

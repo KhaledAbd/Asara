@@ -1,20 +1,17 @@
-<div class="container">
-    <div class="row">
+<body>
 
-        <div class="col-md-10">
+  <section class="container">
+    <h2>سجل يومي</h2>
 
-            <h2 class="text-center" style="direction: rtl;">سجل يومي</h2>
+    <form (ngSubmit)="getDayData()" class="form-group" [formGroup]="formDay">
+      <label for="this-day">اليوم</label>
+      <input id="this-day" type="date" class="my-day form-control" formControlName="day" />
+      <button type="submit" class="btn btn-success">عرض</button>
+    </form>
 
-            <form (ngSubmit)="getDayData()" class="form-group row mb-2" [formGroup]="formDay">
-                <input type="date" class="my-day form-control col-3 mb-2" formControlName="day" />
-                <button type="submit" class="btn btn-success col-3">عرض</button>
-            </form>
+    <ag-grid-angular #agGrid class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+      [rowData]="rowData" [enableRtl]="true">
+    </ag-grid-angular>
 
-            <ag-grid-angular #agGrid style="width: 900px; height: 400px" class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs" [rowData]="rowData" [enableRtl]="true">
-            </ag-grid-angular>
-
-        </div>
-
-        <div class="col-md-2"></div>
-    </div>
-</div>
+  </section>
+</body>

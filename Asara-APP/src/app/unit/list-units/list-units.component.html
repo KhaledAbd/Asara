@@ -1,33 +1,30 @@
-<div class="container" style="margin-left: 20%">
-    <div class="row">
+<body>
 
-        <form class="col-lg-12" [formGroup]="unitForm" (ngSubmit)="onSubmit()" style="margin-top: 1px">
-            <div class="row text-center">
-                <h3 class="text-center mb-2">إضافة وعرض وحدات الأصناف</h3>
+  <div class="container">
+    <form [formGroup]="unitForm" (ngSubmit)="onSubmit()" autocomplete="new-password">
+      <h2>إضافة وعرض وحدات الأصناف</h2>
 
-                <div class="custom-control form-group mt-2 col-4">
-                    <label for="name"></label>
-                    <input type="text" class="form-control" formControlName="name" placeholder="إسم الوحدة المُراد إضافتُها" />
-                </div>
-                <div class="custom-control form-group mt-2 col-4">
-                    <button type="submit" style="width: 100%; margin-top: 25px;" class="btn btn-success ">إضافة</button>
-                </div>
-            </div>
-        </form>
-        <div class="row" style="margin-top: 20px;">
-            <div *ngIf="rowData.length > 0">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <h2 class="text-center mb-3">قائمة الوِحدات</h2>
+      <div class="custom-control form-group new-flx-row">
 
-                    <ag-grid-angular #agGrid style="width: 666px; height: 400px;" class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs" [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true">
-                    </ag-grid-angular>
+        <input type="text" id="name" class="form-control" formControlName="name"
+          placeholder="إسم الوحدة المُراد إضافتُها" autocomplete="new-password" />
 
-                </div>
-                <div class="col-md-2"></div>
-            </div>
-        </div>
+        <label for="name"></label>
+
+        <button type="submit" class="btn add-btn ">إضافة</button>
+      </div>
+    </form>
+
+    <div *ngIf="rowData.length > 0">
+      <div class="list-of-items">
+        <h3>قائمة الوِحدات</h3>
+        <ag-grid-angular #agGrid class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+          [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true"> </ag-grid-angular>
+      </div>
     </div>
-</div>
+  </div>
 
-<app-edit-unit *ngIf="open" [units]="rowData" [unit]="unit" (openEvent)="setOpen($event)" (unitEditEvent)="setUnitEdit($event)"></app-edit-unit>
+  <app-edit-unit *ngIf="open" [units]="rowData" [unit]="unit" (openEvent)="setOpen($event)"
+    (unitEditEvent)="setUnitEdit($event)"></app-edit-unit>
+
+</body>

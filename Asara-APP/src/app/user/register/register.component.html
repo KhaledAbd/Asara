@@ -1,97 +1,134 @@
-<div class="container zoomInDown" style="margin-right: 80px">
-    <div class="row h-100 justify-content-center align-items-center">
+<body>
+  <div class="container zoomInDown">
 
-        <div class="col-12">
+    <form [formGroup]="registerform" (ngSubmit)="register()" autocomplete="false">
+      <h3>تسجيل مُوظف جديد</h3>
 
-            <form [formGroup]="registerform" (ngSubmit)="register()">
-                <h3 class="text-center">تسجيل مُوظف جديد</h3>
+      <div class="form-group sex-selection">
+        <label class="control-label"> الجنس:</label>
 
-                <div class="form-group mt-4 col-6">
+        <label class="radio-inline">
+          <input id="male-select" class="form-check-input" type="radio" value="male" formControlName="gender">
+          <label for="male-select">رجل</label>
+        </label>
 
-                    <label class="control-label" style="margin-right: 10px;"> الجنس:</label>
+        <label class="radio-inline">
+          <input id="female-select" class="form-check-input" type="radio" value="female" formControlName="gender">
+          <label for="female-select">إمرأة</label>
+        </label>
+      </div>
 
-                    <label class="radio-inline">
-                      <input class=" form-check-input" type="radio" value="male" formControlName="gender"style="margin-right: 16px;">رجل
-                  </label>
+      <div class="inputs-grouping">
+        <div class="form-group">
 
-                    <label class="radio-inline">
-                      <input class=" form-check-input" type="radio" value="female" formControlName="gender"style="margin-right: 16px;">إمرأة
-                    </label>
+          <input type="text" class="form-control item" formControlName="username" placeholder="إسم المُعرَّف - Username"
+            [ngClass]="{'is-invalid': f.username.errors && f.username.touched}" (blur)="isExist()" autocomplete="false">
 
-                </div>
+          <div *ngIf="f.username.errors" class="invalid-feedback" (click)="f.username.reset()">
+            <div *ngIf="f.username.errors.required">
+              <p>من فضلِك أدخِل إسم المستخدم</p>
+            </div>
+            <div *ngIf="f.username.errors.minlength">
+              <p>عُذرًا أقل عدد حُروف هو 4 فقط</p>
+            </div>
+            <div *ngIf="f.username.errors.maxlength">
+              <p>عُذرًا أكبر عدد حُروف هو 8 فقط</p>
+            </div>
+            <div *ngIf="f.username.errors.isExist">
+              <p>اسم المستخدم موجود اختر اسمًا اخر</p>
+            </div>
+          </div>
 
-                <br>
-
-                <div class="form-group mt-2 col-4">
-                    <input type="text" class="form-control item" formControlName="username" placeholder="إسم المُعرَّف - Username" [ngClass]="{'is-invalid': f.username.errors && f.username.touched}" (blur)="isExist()" autocomplete="false">
-                    <div *ngIf="f.username.errors" class="invalid-feedback" (click)="f.username.reset()" style="cursor: pointer;">
-                        <div *ngIf="f.username.errors.required" style="margin-top: -10px; font-size: 11px;">من فضلِك أدخِل إسم المستخدم</div>
-                        <div *ngIf="f.username.errors.minlength" style="margin-top: -10px; font-size: 11px;">عُذرًا أقل عدد حُروف هو 4 فقط</div>
-                        <div *ngIf="f.username.errors.maxlength" style="margin-top: -10px; font-size: 11px;">عُذرًا أكبر عدد حُروف هو 8 فقط</div>
-                        <div *ngIf="f.username.errors.isExist" style="margin-top: -10px; font-size: 11px;">اسم المستخدم موجود اختر اسمًا اخر</div>
-
-                    </div>
-                </div>
-
-                <div class="form-group mt-2 col-4">
-                    <input class="form-control item" type="text" [ngClass]="{'is-invalid': f.knownAs.errors && f.knownAs.touched}" formControlName="knownAs" placeholder="إسم الشُهرة - Known as" autocomplete="false">
-                    <div class="invalid-feedback" *ngIf="f.knownAs.errors" (click)="f.knownAs.reset()" style="cursor: pointer;">
-                        <div *ngIf="f.knownAs.errors.required" style="margin-top: -10px; font-size: 11px;">من فضلك أدخِل إسم الشُهرة</div>
-                    </div>
-                </div>
-
-                <div class="form-group mt-2 col-4">
-                    <input class="form-control item" type="date" [ngClass]="{'is-invalid': f.dateOfBirth.errors && f.dateOfBirth.touched}" formControlName="dateOfBirth" autocomplete="false">
-                    <div class="invalid-feedback" *ngIf="f.dateOfBirth.errors" style="margin-top: -10px; font-size: 11px; cursor: pointer;" (click)="f.dateOfBirth.reset()" >
-                        <div *ngIf="f.dateOfBirth.errors.required">من فضلِك أدخِل تاريخ الميلاد</div>
-                    </div>
-                </div>
-
-                <div class="form-group mt-2 col-4">
-                    <input class="form-control item" type="text" [ngClass]="{'is-invalid': f.city.errors && f.city.touched}" formControlName="city" placeholder="المدينة - City" autocomplete="false">
-                    <div class="invalid-feedback" *ngIf="f.city.errors" style="margin-top: -10px; font-size: 11px; cursor: pointer;" (click)="f.city.reset()">
-                        <div *ngIf="f.city.errors.required">من فضلِك أدخِل المدينة</div>
-                    </div>
-                </div>
-
-                <div class="form-group mt-2 col-4">
-                    <input class="form-control item" type="tel" [ngClass]="{'is-invalid': f.telephone.errors && f.telephone.touched}" formControlName="telephone" placeholder="الهاتف - telephone" autocomplete="false">
-                    <div class="invalid-feedback" *ngIf="f.telephone.errors" (click)="f.telephone.reset()" style="cursor: pointer;">
-                        <div class="error" *ngIf="f.telephone.errors.required"  style="margin-top: -10px; font-size: 11px;">
-                            قُمْ بإدخال رقم الهاتف رجاءً
-                        </div>
-                        <div class="error" *ngIf="f.telephone.errors.maxlength || f.telephone.errors.minlength"  style="margin-top: -10px; font-size: 11px;">
-                            الهاتف الذي أدخلته غيرُ صحيح
-                        </div>
-                        <div class="error" *ngIf="f.telephone.errors.pattern"  style="margin-top: -10px; font-size: 11px;">
-                        </div>
-                    </div>
-                </div>
-
-                <div class="form-group mt-2 col-4">
-                    <input type="password" class="form-control item" formControlName="password" placeholder="كلمة المُرور - Password" [ngClass]="{'is-invalid': f.password.errors && f.password.touched}" autocomplete="false">
-                    <div *ngIf="f.password.errors" class="invalid-feedback" style="margin-top: -10px; font-size: 11px; cursor: pointer;" (click)="f.password.reset()">
-                        <div *ngIf="f.password.errors.required">من فضلك أدخِل كلمة المُرور</div>
-                        <div *ngIf="f.password.errors.maxLength && f.password.errors.minLength"> عدد احرف كلمة المرور بين 4 و 20 </div>
-                    </div>
-                </div>
-
-                <div class="form-group mt-2 col-4">
-                    <input type="password" class="form-control item" formControlName="passwordConfirm" placeholder="إعادة كلمة المُرور - Confirm Password" [ngClass]="{'is-invalid': f.passwordConfirm.errors && f.passwordConfirm.touched || registerform.hasError('mismatch')}"
-                        autocomplete="false">
-                    <div *ngIf="f.passwordConfirm.errors" class="invalid-feedback" style="margin-top: -10px; font-size: 11px; cursor: pointer;"  (click)="f.passwordConfirm.reset()">
-                        <div *ngIf="f.passwordConfirm.errors.required">من فضلك أدخِل كلمة المُرور</div>
-                        <div *ngIf="f.passwordConfirm.errors.mustMatch">كلمة المُرور ليست مُتطابقة</div>
-                    </div>
-                </div>
-
-                <div class="form-group text-center col-lg-12">
-                    <button type="submit" class="btn btn-success btn-default btn-block" [disabled]="registerform.invalid">تسجيل</button>
-                </div>
-
-            </form>
         </div>
 
-    </div>
+        <div class="form-group">
+          <input class="form-control item" type="text" [ngClass]="{'is-invalid': f.knownAs.errors && f.knownAs.touched}"
+            formControlName="knownAs" placeholder="إسم الشُهرة - Known as" autocomplete="false">
+          <div class="invalid-feedback" *ngIf="f.knownAs.errors" (click)="f.knownAs.reset()">
+            <div *ngIf="f.knownAs.errors.required">
+              <p>من فضلك أدخِل إسم الشُهرة</p>
+            </div>
+          </div>
+        </div>
 
-</div>
+        <div class="form-group">
+          <div class="birth-date">
+            <label for="my-date">تاريخ الميلاد</label>
+            <input id="my-date" class="form-control item" type="date"
+              [ngClass]="{'is-invalid': f.dateOfBirth.errors && f.dateOfBirth.touched}" formControlName="dateOfBirth"
+              autocomplete="false">
+          </div>
+          <div class="invalid-feedback" *ngIf="f.dateOfBirth.errors" (click)="f.dateOfBirth.reset()">
+            <div *ngIf="f.dateOfBirth.errors.required">
+              <p>من فضلِك أدخِل تاريخ الميلاد</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+
+          <input class="form-control item" type="text" [ngClass]="{'is-invalid': f.city.errors && f.city.touched}"
+            formControlName="city" placeholder="المدينة - City" autocomplete="false">
+
+          <div class="invalid-feedback" *ngIf="f.city.errors" (click)="f.city.reset()">
+            <div *ngIf="f.city.errors.required">
+              <p>من فضلِك أدخِل المدينة</p>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="form-group">
+          <input class="form-control item" type="tel"
+            [ngClass]="{'is-invalid': f.telephone.errors && f.telephone.touched}" formControlName="telephone"
+            placeholder=" رقم الهاتف - Telephone" autocomplete="new-password">
+          <div class="invalid-feedback" *ngIf="f.telephone.errors" (click)="f.telephone.reset()">
+            <div class="error" *ngIf="f.telephone.errors.required">
+              <p>قُمْ بإدخال رقم الهاتف رجاءً</p>
+            </div>
+            <div class="error" *ngIf="f.telephone.errors.maxlength || f.telephone.errors.minlength">
+              <p>الهاتف الذي أدخلته غيرُ صحيح</p>
+            </div>
+            <div class="error" *ngIf="f.telephone.errors.pattern"></div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control item" formControlName="password"
+            placeholder="كلمة المُرور - Password" [ngClass]="{'is-invalid': f.password.errors && f.password.touched}"
+            autocomplete="new-password">
+          <div *ngIf="f.password.errors" class="invalid-feedback" (click)="f.password.reset()">
+            <div *ngIf="f.password.errors.required">
+              <p>من فضلك أدخِل كلمة المُرور</p>
+            </div>
+            <div *ngIf="f.password.errors.maxLength && f.password.errors.minLength">
+              <p>عدد أحرف كلمة المرور بين 4 و 20</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control item" formControlName="passwordConfirm"
+            placeholder="إعادة كلمة المُرور - Confirm Password"
+            [ngClass]="{'is-invalid': f.passwordConfirm.errors && f.passwordConfirm.touched || registerform.hasError('mismatch')}"
+            autocomplete="new-password">
+
+          <div *ngIf="f.passwordConfirm.errors" class="invalid-feedback" (click)="f.passwordConfirm.reset()">
+            <div *ngIf="f.passwordConfirm.errors.required">
+              <p>من فضلك أدخِل كلمة المُرور</p>
+            </div>
+            <div *ngIf="f.passwordConfirm.errors.mustMatch">
+              <p>كلمة المُرور ليست مُتطابقة</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success btn-default" [disabled]="registerform.invalid">تسجيل</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+
+</body>

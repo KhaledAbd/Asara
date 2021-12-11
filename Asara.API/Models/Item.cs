@@ -12,7 +12,6 @@ namespace Asara.API.Models
         public double Price{get; set;}
         public double Quentity {get; set;}  ///ده المخزن من الاخر او الموجود على الرف او ثلاجه
 
-        public int Type {get; set;} // 0 =>  1=> selles
         [ForeignKey("UnitNavigation")]
         public int UnitId{ get; set;}
         public virtual Unit UnitNavigation{get; set;}

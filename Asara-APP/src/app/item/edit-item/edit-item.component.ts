@@ -22,7 +22,6 @@ export class EditItemComponent implements OnInit {
     price: new FormControl('', [Validators.required]),
     quentity: new FormControl('', [Validators.required]),
     unitId: new FormControl('', [Validators.required]),
-    type: new FormControl('', [Validators.required])
   });
   constructor(private itemService: ItemService, private alertify: AlertifyService, private unitService: UnitService) { }
 
@@ -46,9 +45,6 @@ export class EditItemComponent implements OnInit {
   }
   setItemEditEvent(itemAction: { item: Item, isDeleted: boolean, isEdited: boolean }) {
     this.itemEditEvent.emit(itemAction);
-  }
-  get type(){
-    return this.editItemform.get('type');
   }
   update() {
     if (!this.editItemform.disabled) {

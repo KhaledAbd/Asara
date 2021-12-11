@@ -1,106 +1,99 @@
-<aside class="sidebar position-fixed left-0 overflow-auto h-100 float-left" id="show-side-navigation1" #sideBar >
-    <ul class="categories list-unstyled">
+<aside class="sidebar position-fixed left-0 overflow-auto h-100 " id="show-side-navigation1" #sideBar>
+  <ul class="categories list-unstyled">
 
-        <li class="has-dropdown">
-            <div class="full-div">
-                <a (click)="setOpen($event)">
-                    <strong>
-                    الأصناف
-                    <i class="fas fa-arrow-up" style="float: right; padding-top: 4px; margin-right: 10px; font-size: 20px;"></i>
-                </strong>
-                </a>
-            </div>
-            <ul class="sidebar-dropdown list-unstyled">
-                <li><a [routerLink]="['/item']" routerLinkActive="router-link-active">إضافة صنف</a></li>
-                <li><a [routerLink]="['/listitems']" routerLinkActive="router-link-active">قائمة الأصناف</a></li>
-            </ul>
-        </li>
+    <li class="has-dropdown">
+      <div class="full-div">
+        <a (click)="setOpen($event)" class="move-link">
+          <i class="fas fa-arrow-up"></i>
+          <strong>الأصناف</strong>
+        </a>
+      </div>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a [routerLink]="['/item']" routerLinkActive="router-link-active">إضافة صنف</a></li>
+        <li><a [routerLink]="['/listitems']" routerLinkActive="router-link-active">قائمة الأصناف</a></li>
+      </ul>
+    </li>
 
-        <li class="has-dropdown" *ngIf="isMutch()">
-            <div class="full-div">
-                <a (click)="setOpen($event)" style="display: block;">
-                    <strong>الموظفين
-                    <i class="fas fa-arrow-up" style="float: right; padding-top: 4px; margin-right: 10px; font-size: 20px;"></i>
-                </strong>
-                </a>
-            </div>
-            <ul class="sidebar-dropdown list-unstyled">
-                <li><a [routerLink]="['/register']" routerLinkActive="router-link-active">إضافة موظف</a></li>
-                <li><a [routerLink]="['/listusers']" routerLinkActive="router-link-active">قائمة الموظفين</a></li>
-            </ul>
-        </li>
+    <li class="has-dropdown" *ngIf="isMutch()">
+      <div class="full-div">
+        <a (click)="setOpen($event)" class="move-link">
+          <i class="fas fa-arrow-up"></i>
+          <strong>الموظفين</strong>
+        </a>
+      </div>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a [routerLink]="['/register']" routerLinkActive="router-link-active">إضافة موظف</a></li>
+        <li><a [routerLink]="['/listusers']" routerLinkActive="router-link-active">قائمة الموظفين</a></li>
+      </ul>
+    </li>
 
-        <li class="has-dropdown">
-            <div class="full-div">
-                <a (click)="setOpen($event)">
-                    <strong>فواتير
-                    <i class="fas fa-arrow-up" style="float: right; padding-top: 4px; margin-right: 10px; font-size: 20px;"></i>
-                </strong>
-                </a>
-            </div>
-            <ul class="sidebar-dropdown list-unstyled">
-                <li><a [routerLink]="['/addbill', 1]">مبيعات</a></li>
-                <li><a [routerLink]="['/addbill', 0]" routerLinkActive="router-link-active">مُشتريات</a></li>
-                <li><a [routerLink]="['/expenses']" routerLinkActive="router-link-active">أقساط الفواتير</a></li>
-            </ul>
-        </li>
+    <li class="has-dropdown">
+      <div class="full-div">
+        <a (click)="setOpen($event)" class="move-link">
+          <i class="fas fa-arrow-up"></i>
+          <strong>فواتير</strong>
+        </a>
+      </div>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a [routerLink]="['/addbill', 1]">مبيعات</a></li>
+        <li><a [routerLink]="['/addbill', 0]" routerLinkActive="router-link-active">مُشتريات</a></li>
+        <li><a [routerLink]="['/expenses']" routerLinkActive="router-link-active">أقساط الفواتير</a></li>
+      </ul>
+    </li>
 
-        <li class="has-dropdown">
-            <div class="full-div">
-                <a (click)="setOpen($event)">
-                    <strong>المخازن
-                    <i class="fas fa-arrow-up" style="float: right; padding-top: 4px; margin-right: 10px; font-size: 20px;"></i>
-                </strong>
-                </a>
-            </div>
-            <ul class="sidebar-dropdown list-unstyled">
-                <li><a [routerLink]="['/addstock', 1]" routerLinkActive="router-link-active">سحب من المخزن</a></li>
-                <li><a [routerLink]="['/addstock', 0]" routerLinkActive="router-link-active">إيداع بالمخزن</a></li>
-                <li><a [routerLink]="['/stockbilllist']" routerLinkActive="router-link-active">سجلات المخازن</a></li>
-            </ul>
-        </li>
+    <li class="has-dropdown">
+      <div class="full-div">
+        <a (click)="setOpen($event)" class="move-link">
+          <i class="fas fa-arrow-up"></i>
+          <strong>المخازن</strong>
+        </a>
+      </div>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a [routerLink]="['/addstock', 1]" routerLinkActive="router-link-active">سحب من المخزن</a></li>
+        <li><a [routerLink]="['/addstock', 0]" routerLinkActive="router-link-active">إيداع بالمخزن</a></li>
+        <li><a [routerLink]="['/stockbilllist']" routerLinkActive="router-link-active">سجلات المخازن</a></li>
+      </ul>
+    </li>
 
-        <li class="has-dropdown" *ngIf="isMutch()">
-            <div class="full-div">
-                <a (click)="setOpen($event)">
-                    <strong>الجرد
-                    <i class="fas fa-arrow-up" style="float: right; padding-top: 4px; margin-right: 10px; font-size: 20px;"></i>
-                </strong>
-                </a>
-            </div>
-            <ul class="sidebar-dropdown list-unstyled">
-                <li><a [routerLink]="['/barrenmonthly']" routerLinkActive="router-link-active">جرد شهريّ</a></li>
-                <li><a [routerLink]="['/barrendaily']" routerLinkActive="router-link-active">جرد يومى</a></li>
-            </ul>
-        </li>
+    <li class="has-dropdown" *ngIf="isMutch()">
+      <div class="full-div">
+        <a (click)="setOpen($event)" class="move-link">
+          <i class="fas fa-arrow-up"></i>
+          <strong>الجرد</strong>
+        </a>
+      </div>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a [routerLink]="['/barrenmonthly']" routerLinkActive="router-link-active">جرد شهريّ</a></li>
+        <li><a [routerLink]="['/barrendaily']" routerLinkActive="router-link-active">جرد يومى</a></li>
+      </ul>
+    </li>
 
-        <li class="has-dropdown" *ngIf="isMutch()">
-            <div class="full-div">
-                <a (click)="setOpen($event)">
-                    <strong>سجلات السحب
-                    <i class="fas fa-arrow-up" style="float: right; padding-top: 4px; margin-right: 10px; font-size: 20px;"></i>
-                </strong>
-                </a>
-            </div>
-            <ul class="sidebar-dropdown list-unstyled">
-                <li><a [routerLink]="['/monitormonthly']" routerLinkActive="router-link-active">سحب شهرى</a></li>
-                <li><a [routerLink]="['/monitordaily']" routerLinkActive="router-link-active">سحب يومى</a></li>
-            </ul>
-        </li>
-        <li class="has-dropdown">
-            <div class="full-div special">
-                <a [routerLink]="['/extraexpenses']" routerLinkActive="router-link-active">
-                    <strong>مصاريف إضافية</strong>
-                </a>
-            </div>
-        </li>
-        <li class="has-dropdown">
-            <div class="full-div special">
-                <a [routerLink]="['/units']" routerLinkActive="router-link-active">
-                    <strong>وحدات القياس</strong>
-                </a>
-            </div>
-        </li>
+    <li class="has-dropdown" *ngIf="isMutch()">
+      <div class="full-div">
+        <a (click)="setOpen($event)" class="move-link">
+          <i class="fas fa-arrow-up"></i>
+          <strong>سجلات السحب</strong>
+        </a>
+      </div>
+      <ul class="sidebar-dropdown list-unstyled">
+        <li><a [routerLink]="['/monitormonthly']" routerLinkActive="router-link-active">سحب شهرى</a></li>
+        <li><a [routerLink]="['/monitordaily']" routerLinkActive="router-link-active">سحب يومى</a></li>
+      </ul>
+    </li>
+    <li class="has-dropdown">
+      <div class="full-div special">
+        <a [routerLink]="['/extraexpenses']" routerLinkActive="router-link-active">
+          <strong>مصاريف إضافية</strong>
+        </a>
+      </div>
+    </li>
+    <li class="has-dropdown">
+      <div class="full-div special">
+        <a [routerLink]="['/units']" routerLinkActive="router-link-active">
+          <strong>وحدات القياس</strong>
+        </a>
+      </div>
+    </li>
 
-    </ul>
+  </ul>
 </aside>

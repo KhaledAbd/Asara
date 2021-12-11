@@ -21,7 +21,7 @@ export class NavComponent implements OnInit {
       item.classList.toggle('opened');
       icon.classList.remove('fa-arrow-up');
       icon.classList.add('fa-arrow-down');
-      
+
       if (item.classList.contains('opened')) {
           const toOpen = find(item, '.sidebar-dropdown');
           if (toOpen) {

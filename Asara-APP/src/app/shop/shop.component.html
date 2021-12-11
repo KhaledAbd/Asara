@@ -1,69 +1,87 @@
-<div class="container slideInRight" style="margin-right: 170px">
-    <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-12">
-            <h3>تعديل بيانات المحل</h3>
+<body>
+    <div class="container slideInRight">
+        <h2>تعديل بيانات المحل</h2>
 
-            <form class="row" [formGroup]="shopForm" (ngSubmit)="onSubmit()">
-                <div class="form-group mt-1 col-4">
+        <form [formGroup]="shopForm" (ngSubmit)="onSubmit()">
+            <div class="new-section">
+                <div class="form-group flex-col">
+                    <input id="input-1" type="text" class="form-control" formControlName="name"
+                        [ngClass]="{ 'is-invalid': name.errors && name.touched }" autocomplete="off" />
                     <label for="input-1">أدْخِل اسمَ المحل:</label>
-                    <input id="input-1" type="text" class="form-control item justify-content-center" placeholder="أدخِل اسم المحل" formControlName="name" [ngClass]="{ 'is-invalid': name.errors && name.touched }" autocomplete="off" />
                 </div>
+
                 <div *ngIf="name.touched && name.errors">
-                    <div class="error" *ngIf="name.errors.required" (click)="name.reset()" style="margin-top: -10px; font-size: 13px;">
+                    <div class="error" *ngIf="name.errors.required" (click)="name.reset()">
                         قُمْ بإدخال اسم المحل رجاءً
                     </div>
-                    <div class="error" *ngIf="name.errors.maxlength || name.errors.minlength" (click)="name.reset()" style="margin-top: -10px; font-size: 13px;">
+                    <div class="error" *ngIf="name.errors.maxlength || name.errors.minlength" (click)="name.reset()">
                         الإسم الذي أدخلته غيرُ صحيح
                     </div>
                 </div>
-                <div class="clearfix"></div>
+            </div>
 
-                <div class="form-group mt-1 col-4">
+            <div class="new-section">
+                <div class="form-group flex-col">
+                    <input id="input-2" type="text" class="form-control" minlength="1" formControlName="address"
+                        [ngClass]="{ 'is-invalid': address.errors && address.touched }" autocomplete="off" />
                     <label for="input-2">أدخِل عنوان المحل:</label>
-                    <input id="input-2" type="text" class="form-control item justify-content-center" placeholder="أدخِل عنوان المحل" minlength="1" formControlName="address" [ngClass]="{ 'is-invalid': address.errors && address.touched }" autocomplete="off" />
                 </div>
+
                 <div *ngIf="address.touched && address.errors">
-                    <div class="error" *ngIf="address.errors.required" (click)="address.reset()" style="margin-top: -10px; font-size: 13px;">
-                        قُمْ بإدخال عنوان المحل رجاءً
+                    <div class="error" *ngIf="address.errors.required" (click)="address.reset()">
+                        <p>قُمْ بإدخال عنوان المحل رجاءً</p>
                     </div>
-                    <div class="error" *ngIf="address.errors.maxlength || address.errors.minlength" (click)="address.reset()" style="margin-top: -10px; font-size: 13px;">
-                        الإسم الذي أدخلته غيرُ صحيح
+                    <div class="error" *ngIf="address.errors.maxlength || address.errors.minlength"
+                        (click)="address.reset()">
+                        <p>الإسم الذي أدخلته غيرُ صحيح</p>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="form-group mt-1 col-4">
+            </div>
+
+            <div class="new-section">
+                <div class="form-group flex-col">
+                    <input id="input-2" type="tel" class="form-control" minlength="1" formControlName="telephone"
+                        [ngClass]="{ 'is-invalid': telephone.errors && telephone.touched }" autocomplete="off" />
                     <label for="input-2">رقم الهاتف:</label>
-                    <input id="input-2" type="tel" class="form-control item justify-content-center" placeholder="أدخِل رقم الهاتف" minlength="1" formControlName="telephone" [ngClass]="{ 'is-invalid': telephone.errors && telephone.touched }" autocomplete="off" />
                 </div>
+
                 <div *ngIf="telephone.touched && telephone.errors">
-                    <div class="error" *ngIf="telephone.errors.required" (click)="telephone.reset()" style="margin-top: -10px; font-size: 13px;">
-                        قُمْ بإدخال رقم الهاتف صحيحًا
+                    <div class="error" *ngIf="telephone.errors.required" (click)="telephone.reset()">
+                        <p>قُمْ بإدخال رقم الهاتف صحيحًا</p>
                     </div>
-                    <div class="error" *ngIf="telephone.errors.maxlength || telephone.errors.minlength" (click)="telephone.reset()" style="margin-top: -10px; font-size: 13px;">
-                        الإسم الذي أدخلته غيرُ صحيح
+
+                    <div class="error" *ngIf="telephone.errors.maxlength || telephone.errors.minlength"
+                        (click)="telephone.reset()">
+                        <p>الإسم الذي أدخلته غيرُ صحيح</p>
                     </div>
-                    <div class="error" *ngIf="telephone.errors.pattern" (click)="telephone.reset()" style="margin-top: -10px; font-size: 13px;">
-                        قُمْ بإدخال رقم المحل صحيح
+
+                    <div class="error" *ngIf="telephone.errors.pattern" (click)="telephone.reset()">
+                        <p>قُمْ بإدخال رقم المحل صحيح</p>
                     </div>
                 </div>
-                <div class="clearfix"></div>
-                <div class="form-group mt-1 col-4">
+            </div>
+
+            <div class="new-section">
+                <div class="form-group flex-col">
+                    <input id="input-2" type="text" class="form-control" minlength="1" formControlName="title"
+                        [ngClass]="{ 'is-invalid': title.errors && title.touched }" autocomplete="off" />
                     <label for="input-2">عنوان التطبيق:</label>
-                    <input id="input-2" type="text" class="form-control item justify-content-center" placeholder="أدخِل عنوان التطبيق" minlength="1" formControlName="title" [ngClass]="{ 'is-invalid': title.errors && title.touched }" autocomplete="off" />
                 </div>
+
                 <div *ngIf="title.touched && title.errors">
-                    <div class="error" *ngIf="title.errors.required" (click)="title.reset()" style="margin-top: -10px; font-size: 13px;">
-                        قُمْ بإدخال عنوان التطبيق رجاءً
+                    <div class="error" *ngIf="title.errors.required" (click)="title.reset()">
+                        <p>قُمْ بإدخال عنوان التطبيق رجاءً</p>
                     </div>
-                    <div class="error" *ngIf="title.errors.maxlength || title.errors.minlength" (click)="title.reset()" style="margin-top: -10px; font-size: 13px;">
-                        الإسم الذي أدخلته غيرُ صحيح
+
+                    <div class="error" *ngIf="title.errors.maxlength || title.errors.minlength" (click)="title.reset()">
+                        <p>الإسم الذي أدخلته غيرُ صحيح</p>
                     </div>
+
                 </div>
-                <div class="clearfix"></div>
-                <button type="submit" [disabled]="shopForm.invalid || !shopForm.touched" class="btn btn-success form-control mt-2 btn-block">
-                    حفظُ الإضافة
-                </button>
-            </form>
-        </div>
+            </div>
+
+            <button type="submit" [disabled]="shopForm.invalid || !shopForm.touched"
+                class="btn btn-success form-control">حفظُ الإضافة</button>
+        </form>
     </div>
-</div>
+</body>

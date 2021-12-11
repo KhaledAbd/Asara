@@ -67,18 +67,16 @@ namespace Asara.API.Controllers
                         reason= "دفعة الاموال المسلمة اول مره";
                         
                     }
-                    if(!isNotEnough){
-                        var expenseses = new Expenses(){
+                    var expenseses = new Expenses(){
                                                 CreatedAt = bill.CreatedAt,
                                                 Reason = reason,
                                                 Paid = bill.Paid,
                                                 UserId = bill.UserId,
                                                 BillNavigation= bill
                                             };
-                        await dataContext.AddAsync<Expenses>(expenseses);
-                        await dataContext.SaveChangesAsync();
-                        isSaved = true;
-                    }
+                    await dataContext.AddAsync<Expenses>(expenseses);
+                    await dataContext.SaveChangesAsync();
+                    isSaved = true;
                 }
             }
             return Ok(new { isSaved = isSaved, bill = mapper.Map<BillDetailsDtos>(bill), isNotEnough = isNotEnough });

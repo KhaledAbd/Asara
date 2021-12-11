@@ -2,7 +2,7 @@ using System;
 
 namespace Asara.API.Dtos
 {
-    public class barrenDetailsDtos
+    public class BarrenDetailsDtos
     {
         public int ItemId {get; set;}
 

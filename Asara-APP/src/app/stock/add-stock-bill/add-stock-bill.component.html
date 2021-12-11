@@ -1,78 +1,75 @@
-<div class="container">
+<body>
+  <section class="container">
 
-    <div class="row">
+    <header>
+      <h2 *ngIf="typePage == 0" class="text-center">إيداع بالمخزن</h2>
+      <h2 *ngIf="typePage == 1" class="text-center">سحب من المخزن</h2>
 
-        <h2 *ngIf="typePage == 0" class="text-center">إيداع بالمخزن</h2>
-        <h2 *ngIf="typePage == 1" class="text-center">سحب من المخزن</h2>
+      <div class="custom-control form-group custom-worker-lyout">
+        <label for="worker">إسم العامل</label>
+        <input type="text" id="worker" class="form-control" formControlName="worker" placeholder="إسم العامل">
+      </div>
+    </header>
 
-        <form class="col-lg-12" [formGroup]="stockBillForm" (ngSubmit)="onSubmit()" style="margin-top: 20px;">
+    <form [formGroup]="stockBillForm" (ngSubmit)="onSubmit()" id="new-form">
 
-            <div class="row text-center">
-                <div class="custom-control form-group mt-2 col-6" style="margin-bottom: -20px;">
-                    <label for="worker" class="col-2" style="float: right; display: block;">العامل</label>
-                    <input type="text" id="worker" class="form-control mt-2 mb-3 col-2" formControlName="worker" placeholder="إسم العامل">
-                </div>
-            </div>
+      <table id="itemTable">
+        <thead>
+          <tr>
+            <th>الصنف</th>
+            <th>الكمية</th>
+            <th>إضافة</th>
+            <th>حذف</th>
+          </tr>
+        </thead>
 
-            <div>
-                <table id='itemTable' class="mt-10 col-6">
+        <tbody>
+          <tr *ngFor="let stockItem of stockBillForm.get('stockItems')?.controls; let index = index;"
+            [formGroup]="stockItem">
 
-                    <thead>
-                        <tr>
-                            <th>الصنف</th>
-                            <th>الكمية</th>
-                            <th>إضافة</th>
-                            <th>حذف</th>
-                        </tr>
-                    </thead>
+            <td>
+              <select id="items" formControlName="itemId" class="form-control custom-select myInput"
+                [ngClass]="{ 'is-invalid': stockItem.get('itemId').errors && stockItem.get('itemId').touched}"
+                (change)="setItem($event); ListChoisedAction(selectItem);" #selectItem>
 
-                    <tbody>
+                <option disabled selected>اختر الصنف</option>
+                <option *ngFor="let item of items; let index = index" [value]="item.id">{{item.unitNavigation.name}}
+                  {{item.name}}</option>
+              </select>
+            </td>
 
-                        <tr *ngFor="let stockItem of stockBillForm.get('stockItems')?.controls; let index = index;" [formGroup]="stockItem">
+            <td>
+              <input type="number" id="quentity" class="form-control myInput" formControlName="quentity"
+                (blur)="setTotal()"
+                [ngClass]="{ 'is-invalid': stockItem.get('quentity').errors &&  stockItem.get('quentity').touched}">
+            </td>
 
-                            <td>
-                                <select id="items" formControlName="itemId" class="form-control custom-select myInput" [ngClass]="{ 'is-invalid': stockItem.get('itemId').errors && stockItem.get('itemId').touched}" (change)="setItem($event); ListChoisedAction(selectItem);" #selectItem>
-                                    <option disabled selected>اختر الصنف</option>
-                                    <option *ngFor="let item of items; let index = index" [value]="item.id">{{item.unitNavigation.name}} {{item.name}}</option>
-                                </select>
-                            </td>
+            <td>
+              <button type="button" (click)="addNewrow()" [disabled]="stockItem.invalid || stockItem.disabled">
+                <i class="fas fa-plus addIcon"></i>
+              </button>
+            </td>
+            <td>
+              <button type="button" (click)="onRemoveRow(index)" [disabled]="isFirst()">
+                <i class="fas fa-trash-alt removeIcon"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-                            <td>
-                                <input type="number" id="quentity" class="form-control myInput" style="width:210px;" formControlName="quentity" (blur)="setTotal()" [ngClass]="{ 'is-invalid': stockItem.get('quentity').errors &&  stockItem.get('quentity').touched}">
-                            </td>
+    </form>
 
-                            <td>
-                                <button type="button" style="border: none; right: 30px; background-color: none;" (click)="addNewrow()" [disabled]="stockItem.invalid || stockItem.disabled">
-                                  <i class="fas fa-plus addIcon"></i>
-                                </button>
-                            </td>
-                            <td>
-                                <button type="button" style="border: none; right: 30px; background-color: none;" (click)="onRemoveRow(index)" [disabled]="isFirst()">
-                                  <i class="fas fa-trash-alt removeIcon"></i>
-                                </button>
-                            </td>
+    <div class="all-buttons">
+      <button type="submit" class="btn new-button" id="new-form"
+        [disabled]="stockBillForm.invalid || stockBillForm.disabled">إدخال الفاتورة الآن</button>
 
-                        </tr>
-
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="row">
-                <div class="col-md-2"></div>
-
-                <div class="col-md-8">
-                    <button type="submit" class="btn-success btn mt-2 new-button" style="width: 100%;" [disabled]="stockBillForm.invalid || stockBillForm.disabled">إدخال</button>
-                </div>
-
-                <div class="col-md-2"></div>
-            </div>
-
-        </form>
-        <a (click)="showListRetreive(true)" class="btn btn-success mt-4" style="width: 50%;">مُراجعة الفواتير</a>
-        <a (click)="removeList()" class="btn btn-success mt-4" style="width: 43%; margin-right: 2%">إخلاء القائمة</a>
-
-        <div class="col-lg-2"></div>
+      <a (click)="showListRetreive(true)" class="btn">مُراجعة الفواتير</a>
+      <a (click)="removeList()" class="btn">إخلاء القائمة</a>
     </div>
-</div>
-<app-retreive-stock-bill *ngIf="openRetreive" (DeletedStockBills)="resetBills($event)" (showRetreive)="showListRetreive($event)" [rowData]="reteiveList"></app-retreive-stock-bill>
+  </section>
+
+  <app-retreive-stock-bill *ngIf="openRetreive" (DeletedStockBills)="resetBills($event)"
+    (showRetreive)="showListRetreive($event)" [rowData]="reteiveList"></app-retreive-stock-bill>
+
+</body>

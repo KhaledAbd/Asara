@@ -140,7 +140,6 @@ export class AddBillComponent implements OnInit {
     return this.billItems.length === 1;
   }
   onSubmit() {
-    this.setTotal();
     this.billForm.get('createdAt').setValue(new Date().toLocaleString());
     this.billForm.get('userId').setValue(this.user.id);
     if (this.billForm.valid) {
@@ -156,7 +155,7 @@ export class AddBillComponent implements OnInit {
         if (d.bill) {
           if (d.isNotEnough){
             if (d.bill.type == 1 ){
-              this.alertifyService.error('الكمية ليس موجوده ');
+              this.alertifyService.error('الكمية ليست موجوده ');
             }else{
               this.alertifyService.error('المال غير كافى راجع حسابك');
             }
@@ -175,8 +174,7 @@ export class AddBillComponent implements OnInit {
             }
             setTimeout(() => {
               this.print(d.bill, discount);
-            }
-              , 500);
+            }, 900);
           }
         }
       }, e => {
@@ -206,6 +204,9 @@ export class AddBillComponent implements OnInit {
         itemsList[itemId].total += quentity;
         if (itemsList[itemId].quentity < itemsList[itemId].total && itemsList[itemId].itemId == itemId) {
           billItem.get('quentity').setErrors({ notEnought: true });
+          setTimeout(() => {
+            billItem.get('quentity').setErrors(null);
+          }, 500);
         }
       }
       total += (quentity * price) - ((quentity * price) * (+this.discount.value / 100));

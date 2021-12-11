@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { GridOptions } from 'ag-grid-community';
 import * as moment from 'moment';
 import { Bill } from 'src/models/bill';
-import { Item } from 'src/models/item';
 import { User } from 'src/models/user';
 import { AlertifyService } from 'src/service/alterify.service';
 import { AuthService } from 'src/service/auth.service';
@@ -95,7 +94,7 @@ export class RetreiveBillComponent implements OnInit {
       this.type = d.id;
     });
     if (this.rowData){
-      this.rowData = this.rowData.filter(p => this.type === p.type).reverse();
+      this.rowData = this.rowData.filter(p => this.type == p.type).reverse();
     }
   }
   showEvent(t: boolean){

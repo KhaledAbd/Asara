@@ -1,45 +1,40 @@
-<div class="container" style="margin-left: 20%">
-    <div class="row">
+<body>
+  <div class="container">
+    <h3>إضافة مصروفات لفاتورة</h3>
 
-        <form class="col-lg-12" [formGroup]="extraExpensesForm" (ngSubmit)="onSubmit()" style="margin-top: 1px">
-            <div class="row text-center">
-                <h3 class="text-center mb-5" style="margin-top: 10px">إضافة مصروفات لفاتورة</h3>
+    <form [formGroup]="extraExpensesForm" (ngSubmit)="onSubmit()">
 
-                <input type="date" class="form-control text-center" (change)="search($event)" style="width: 29%; margin-top: 43px; margin-right: 3%;">
+      <div class="add-date">
+        <label for="my-date">التاريخ</label>
+        <input id="my-date" type="date" class="form-control" (change)="search($event)">
+      </div>
 
-                <div class="custom-control form-group mt-2 col-4">
-                    <label for="paid">القيمة المدفوعة</label>
-                    <input type="number" class="form-control" formControlName="paid" placeholder="أدْخِلْ القيمة المالية" [ngClass]="{
-              'is-invalid':
-                extraExpensesForm.get('paid').errors &&
-                extraExpensesForm.get('paid').touched
-            }" />
-                </div>
-                <div class="custom-control form-group mt-2 col-4">
-                    <label for="reason">سبب الدفع </label>
-                    <input type="text" class="form-control" formControlName="reason" placeholder="سبب الدفع" [ngClass]="{
-              'is-invalid':
-                extraExpensesForm.get('reason').errors &&
-                extraExpensesForm.get('reason').touched
-            }" />
-                </div>
-                <div class="custom-control form-group mt-3 col-12">
-                    <button type="submit" class="btn btn-success" style="width: 100%; margin-top: 28px;" [disabled]="extraExpensesForm.errors && extraExpensesForm.touched">
-              إضافة
-            </button>
-                </div>
-            </div>
-        </form>
+      <div class="custom-control form-group">
+        <!-- <label for="paid">القيمة المدفوعة</label> -->
+        <input id="paid" type="number" class="form-control" formControlName="paid" placeholder="أدْخِلْ القيمة المالية"
+          [ngClass]="{ 'is-invalid': extraExpensesForm.get('paid').errors && extraExpensesForm.get('paid').touched }" />
+      </div>
 
-        <div class="row" style="margin-top: 20px;">
-            <div *ngIf="rowData.length > 0">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <ag-grid-angular #agGrid style="width: 666px; height: 400px" class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs" [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true">
-                    </ag-grid-angular>
-                </div>
-                <div class="col-md-2"></div>
-            </div>
+      <div class="custom-control form-group">
+        <!-- <label for="reason">سبب الدفع </label> -->
+        <input id="reason" type="text" class="form-control" formControlName="reason" placeholder="سبب الدفع" [ngClass]="{
+              'is-invalid': extraExpensesForm.get('reason').errors && extraExpensesForm.get('reason').touched }" />
+      </div>
+
+      <div class="custom-control form-group">
+        <button type="submit" class="btn btn-success"
+          [disabled]="extraExpensesForm.errors && extraExpensesForm.touched">إضافة</button>
+      </div>
+    </form>
+
+    <div>
+      <div *ngIf="rowData.length > 0">
+        <div>
+          <ag-grid-angular #agGrid class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+            [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true"> </ag-grid-angular>
         </div>
+      </div>
     </div>
-</div>
+  </div>
+
+</body>

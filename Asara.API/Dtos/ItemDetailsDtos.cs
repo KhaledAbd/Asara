@@ -11,7 +11,5 @@ namespace Asara.API.Dtos
         public double Price{get; set;}
         public double Quentity {get; set;}  ///ده المخزن من الاخر او الموجود على الرف او ثلاجه
         public Unit UnitNavigation{get; set;}
-
-        public int Type{get; set;}
     }
 }

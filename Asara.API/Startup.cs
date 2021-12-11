@@ -16,10 +16,9 @@ using System.Net;
 using Asara.API.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.SpaServices;
 using System.IO;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.AspNetCore.SpaServices.Extensions;
+using System;
+
 namespace Asara.API
 {
     public class Startup
@@ -34,11 +33,67 @@ namespace Asara.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
-	    services.AddDbContext<DataContext>(x =>
+	        services.AddDbContext<DataContext>(x =>
             {
+                x.UseMySql(Configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 26)));
                 x.UseLazyLoadingProxies();
+            });
+
+            IdentityBuilder builder = services.AddIdentityCore<User>(opt =>
+            {
+                opt.Password.RequireDigit = false;
+                opt.Password.RequiredLength = 4;
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireLowercase = false;
+
+            });
+            builder = new IdentityBuilder(builder.UserType, typeof(Role), builder.Services);
+            builder.AddEntityFrameworkStores<DataContext>();
+            builder.AddRoleValidator<RoleValidator<Role>>();
+            builder.AddRoleManager<RoleManager<Role>>();
+            builder.AddSignInManager<SignInManager<User>>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII
+                            .GetBytes(Configuration.GetSection("APISettings:Token").Value)),
+                        ValidateIssuer = false,
+                        ValidateAudience = false
+                    };
+                });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("Admin"));
+                options.AddPolicy("RequireEmployeeRole", policy => policy.RequireRole("Employee"));
+            });
+            services.AddControllersWithViews(options =>
+                    {
+                        var policy = new AuthorizationPolicyBuilder()
+                            .RequireAuthenticatedUser()
+                            .Build();
+                        options.Filters.Add(new AuthorizeFilter(policy));
+                    }).AddNewtonsoftJson(options =>
+                                        options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                                    );
+            services.AddCors();
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddSpaStaticFiles(configuration =>
+            {
+                configuration.RootPath = "wwwroot";
+            });
+            services.AddAutoMapper(typeof(Startup));
+        }
+
+    public void ConfigureDevelopmentServices(IServiceCollection services)
+        {
+	        services.AddDbContext<DataContext>(x =>
+            {
                 x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"));
+                x.UseLazyLoadingProxies();
             });
 
             IdentityBuilder builder = services.AddIdentityCore<User>(opt =>

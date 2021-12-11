@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -52,7 +53,6 @@ namespace Asara.API.Controllers
                 item.Price = itemFromDtos.Price;
                 item.UnitNavigation = await dataContext.Units.FindAsync(itemFromDtos.UnitId);
                 item.Name = itemFromDtos.Name;
-                item.Type = itemFromDtos.Type;
                 await dataContext.SaveChangesAsync();
                 isUpdated = true;
             }

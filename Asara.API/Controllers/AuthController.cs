@@ -75,9 +75,9 @@ namespace Asara.API.Controllers
         public async Task<IActionResult> DeleteUser(int id){
             var isDeleted = false;
             User user = null;
-            if((user = await dataContext.FindAsync<User>(id)) != null){
-                await userManager.DeleteAsync(user);
-                isDeleted = true;
+            if((user = await dataContext.FindAsync<User>(id)) != null && !(await userManager.GetRolesAsync(user)).Contains("Admin")){
+                    await userManager.DeleteAsync(user);
+                    isDeleted = true;
             }
             return Ok(new {isDeleted = isDeleted});
         }
@@ -89,8 +89,10 @@ namespace Asara.API.Controllers
             var user = await userManager.FindByIdAsync(id.ToString());
             var isChanged = false;
             if(user != null){
-                await userManager.ChangePasswordAsync(user, passwordChangeFormDtos.Password, passwordChangeFormDtos.NewPassword);
-                isChanged = true;
+                var result = await userManager.ChangePasswordAsync(user, passwordChangeFormDtos.Password, passwordChangeFormDtos.NewPassword);
+                if(result.Succeeded){
+                    isChanged = true;
+                }
             }
             return Ok(new{isChanged = isChanged});
 

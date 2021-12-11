@@ -16,6 +16,7 @@ namespace Asara.API.Helpers
                 CreateMap<ItemFromDtos, Item>().ForMember(dest => dest.UnitId, opt => {
                         opt.MapFrom(d =>d.UnitId);
                     });
+                CreateMap<ItemMobilefromDtos, Item>();
                 CreateMap<BillFromDtos, Bill>();
                 CreateMap<Bill, BillDetailsDtos>();
                 CreateMap<userForUpdateDtos, User>();
@@ -32,7 +33,7 @@ namespace Asara.API.Helpers
                         opt.MapFrom(d => new Item(){Id=d.ItemId});
                     }
                 );
-                CreateMap<BillItem, barrenDetailsDtos>().ForMember(
+                CreateMap<BillItem, BarrenDetailsDtos>().ForMember(
                     dest=> dest.CreatedAt,
                     opt => {
                         opt.MapFrom(d => d.BillNavigation.CreatedAt);
@@ -84,7 +85,6 @@ namespace Asara.API.Helpers
                 CreateMap<ExtraExpenses, ExtraExpensesDetailsDtos>();
                 CreateMap<AccountFromDtos, Account>();
                 CreateMap<Account, AccountDetailsDtos>();
-
        }
     }
 }

@@ -109,6 +109,7 @@ export class ExtraExpensesComponent implements OnInit {
           }
           this.user.money -= d.extraExpenses.paid;
           this.authService.setMoney(this.user.money);
+          this.extraExpensesForm.reset();
         }
       }, e => {
         console.log(e);

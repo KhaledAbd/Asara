@@ -8,6 +8,5 @@ namespace Asara.API.Dtos
         public string Name{get; set;}
         public double Price{get; set;}
         public int UnitId{ get; set;}
-        public int Type{get; set;}
     }
 }

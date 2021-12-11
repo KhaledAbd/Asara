@@ -1,28 +1,86 @@
 * {
-    direction: rtl;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  direction: rtl;
 }
 
-.col-md-10 h2 {
-    margin-bottom: 20px;
-    margin-top: 40px;
+*:focus {
+  outline: 0;
+  border: 0;
 }
 
-.row {
-    animation: animation-2 0.5s ease-out 0s 1 alternate forwards;
-    margin-left: 15px;
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 900px;
+  height: 500px;
+  padding: 10px;
+  margin: 0;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 10px;
+  animation: swing-in-back 1s ease 0s 1 alternate forwards;
+}
+
+h2 {
+  font-size: 19px;
+  font-weight: bold;
+  text-align: center;
+  align-self: center;
+  margin-bottom: 0;
+}
+
+.container header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.container form {
+  width: 100%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  text-align: center;
+}
+
+.container form input {
+  width: 100%;
+  position: relative;
+  margin: 0 auto 15px;
+  padding: 10px 15px;
+  background-color: transparent;
+  border-radius: 2px;
+  border: none;
+  border-bottom: 1px solid #43a047;
+  outline: 0;
+  caret-color: #43a047;
+  color: #2c682f;
+  font-weight: bold;
+  font-family: "Cairo", sans-serif;
 }
 
 .form-group button {
-    margin-bottom: 17px;
-    margin-top: 1px;
-    margin-left: 0;
-    margin-right: auto;
-    height: 42px;
+  width: 60%;
+  padding: 6px 0;
+  align-self: flex-end;
+  margin: auto;
+  display: inline-block;
 }
 
-.my-day {
-    width: 70%;
-    height: 40px;
-    margin-right: 15px;
+.ag-theme-alpine {
+  width: 100%;
+  height: 300px;
 }

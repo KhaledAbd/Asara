@@ -12,9 +12,6 @@ namespace Asara.API.Models
         public DateTime DateOfBirth {get; set;}
 
         public string KnownAs { get; set; }
-        
-        public DateTime Created { get; set; }
-        public DateTime LastActive { get; set; }
         public string City { get; set; }
         public string Telephone { get; set; }
         public double Money {get; set;}

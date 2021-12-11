@@ -1,18 +1,11 @@
 <div class="container">
 
-    <div class="row">
+  <h2 class="text-center">قائمة المُوظفين</h2>
 
-        <div class="col-md-8" style="margin-right: 10%;">
+  <ag-grid-angular #agGrid class="ag-theme-alpine ang-table" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+    [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true"> </ag-grid-angular>
 
-            <h2 class="text-center">قائمة المُوظفين</h2>
-
-            <ag-grid-angular #agGrid style="width: 700px; height: 400px; margin-right: -40px;" class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs" [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true">
-            </ag-grid-angular>
-
-        </div>
-
-        <div class="col-md-4"></div>
-    </div>
 </div>
 
-<app-edit-user *ngIf="open" [user]="user" (userEditEvent)="userEdit($event)" (openEvent)="setOpen($event)"></app-edit-user>
+<app-edit-user *ngIf="open" [user]="user" (userEditEvent)="userEdit($event)" (openEvent)="setOpen($event)">
+</app-edit-user>

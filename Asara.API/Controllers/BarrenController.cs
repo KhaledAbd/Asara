@@ -24,14 +24,13 @@ namespace Asara.API.Controllers
         }
 
         [HttpGet("{day}")]
-        public async Task<IEnumerable<barrenDetailsDtos>> GetBarrenDaily(DateTime day) => 
-        mapper.Map<IEnumerable<barrenDetailsDtos>>(await dataContext.BillItems.Where
+        public async Task<IEnumerable<BarrenDetailsDtos>> GetBarrenDaily(DateTime day) => 
+        mapper.Map<IEnumerable<BarrenDetailsDtos>>(await dataContext.BillItems.Where
         (i => (i.BillNavigation.CreatedAt.Year == day.Year && i.BillNavigation.CreatedAt.Month == day.Month && i.BillNavigation.CreatedAt.Day == day.Day) ).ToListAsync());
 
         [HttpGet("year/{year}/month/{month}")]
-        public async Task<IEnumerable<barrenDetailsDtos>> GetBarrenMonthly(int year, int month) => 
-        mapper.Map<IEnumerable<barrenDetailsDtos>>(await dataContext.BillItems.Include(p => p.BillNavigation).Where
+        public async Task<IEnumerable<BarrenDetailsDtos>> GetBarrenMonthly(int year, int month) => 
+        mapper.Map<IEnumerable<BarrenDetailsDtos>>(await dataContext.BillItems.Include(p => p.BillNavigation).Where
         (i => (i.BillNavigation.CreatedAt.Year == year && i.BillNavigation.CreatedAt.Month == month) ).ToListAsync());
-
     }
 }

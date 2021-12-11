@@ -46,7 +46,7 @@ export class ListItemComponent implements OnInit {
           this.item = p.data;
         }
       },
-      { field: 'name', headerName: 'اسم الصنف', type: 'rightAligned', filter:true},
+      { field: 'name', headerName: 'إسم الصنف', type: 'rightAligned', filter:true},
       { field: 'price', headerName: 'السعر', type: 'rightAligned' },
       { field: 'quentity', headerName: 'الكمية', type: 'rightAligned' },
       {

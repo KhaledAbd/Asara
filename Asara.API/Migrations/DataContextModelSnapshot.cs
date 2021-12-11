@@ -14,7 +14,7 @@ namespace Asara.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "5.0.9");
+                .HasAnnotation("ProductVersion", "5.0.10");
 
             modelBuilder.Entity("Asara.API.Models.Account", b =>
                 {
@@ -172,9 +172,6 @@ namespace Asara.API.Migrations
                     b.Property<double>("Quentity")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("UnitId")
                         .HasColumnType("INTEGER");
 
@@ -314,9 +311,6 @@ namespace Asara.API.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("TEXT");
 
@@ -331,9 +325,6 @@ namespace Asara.API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("KnownAs")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("LastActive")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
