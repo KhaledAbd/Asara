@@ -42,7 +42,7 @@ export class EditUserComponent implements OnInit {
   }
   delete() {
     this.alertify.confirm('هل أنت مُتأكد من حذف هذا المُوظف؟', () => {
-      if (this.authService.currentUserValue.) {
+      if (this.authService.roleMatch(['Admin'])) {
         this.authService.deleteUser(this.user.id).subscribe(
           d => {
             if (d.isDeleted) {
