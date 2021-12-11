@@ -1,0 +1,30 @@
+<body>
+
+  <div class="container">
+    <form [formGroup]="unitForm" (ngSubmit)="onSubmit()" autocomplete="new-password">
+      <h2>إضافة وعرض وحدات الأصناف</h2>
+
+      <div class="custom-control form-group new-flx-row">
+
+        <input type="text" id="name" class="form-control" formControlName="name"
+          placeholder="إسم الوحدة المُراد إضافتُها" autocomplete="new-password" />
+
+        <label for="name"></label>
+
+        <button type="submit" class="btn add-btn ">إضافة</button>
+      </div>
+    </form>
+
+    <div *ngIf="rowData.length > 0">
+      <div class="list-of-items">
+        <h3>قائمة الوِحدات</h3>
+        <ag-grid-angular #agGrid class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+          [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true"> </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+
+  <app-edit-unit *ngIf="open" [units]="rowData" [unit]="unit" (openEvent)="setOpen($event)"
+    (unitEditEvent)="setUnitEdit($event)"></app-edit-unit>
+
+</body>

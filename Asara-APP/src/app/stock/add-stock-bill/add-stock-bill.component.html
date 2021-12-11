@@ -1,0 +1,75 @@
+<body>
+  <section class="container">
+
+    <header>
+      <h2 *ngIf="typePage == 0" class="text-center">إيداع بالمخزن</h2>
+      <h2 *ngIf="typePage == 1" class="text-center">سحب من المخزن</h2>
+
+      <div class="custom-control form-group custom-worker-lyout">
+        <label for="worker">إسم العامل</label>
+        <input type="text" id="worker" class="form-control" formControlName="worker" placeholder="إسم العامل">
+      </div>
+    </header>
+
+    <form [formGroup]="stockBillForm" (ngSubmit)="onSubmit()" id="new-form">
+
+      <table id="itemTable">
+        <thead>
+          <tr>
+            <th>الصنف</th>
+            <th>الكمية</th>
+            <th>إضافة</th>
+            <th>حذف</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let stockItem of stockBillForm.get('stockItems')?.controls; let index = index;"
+            [formGroup]="stockItem">
+
+            <td>
+              <select id="items" formControlName="itemId" class="form-control custom-select myInput"
+                [ngClass]="{ 'is-invalid': stockItem.get('itemId').errors && stockItem.get('itemId').touched}"
+                (change)="setItem($event); ListChoisedAction(selectItem);" #selectItem>
+
+                <option disabled selected>اختر الصنف</option>
+                <option *ngFor="let item of items; let index = index" [value]="item.id">{{item.unitNavigation.name}}
+                  {{item.name}}</option>
+              </select>
+            </td>
+
+            <td>
+              <input type="number" id="quentity" class="form-control myInput" formControlName="quentity"
+                (blur)="setTotal()"
+                [ngClass]="{ 'is-invalid': stockItem.get('quentity').errors &&  stockItem.get('quentity').touched}">
+            </td>
+
+            <td>
+              <button type="button" (click)="addNewrow()" [disabled]="stockItem.invalid || stockItem.disabled">
+                <i class="fas fa-plus addIcon"></i>
+              </button>
+            </td>
+            <td>
+              <button type="button" (click)="onRemoveRow(index)" [disabled]="isFirst()">
+                <i class="fas fa-trash-alt removeIcon"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </form>
+
+    <div class="all-buttons">
+      <button type="submit" class="btn new-button" id="new-form"
+        [disabled]="stockBillForm.invalid || stockBillForm.disabled">إدخال الفاتورة الآن</button>
+
+      <a (click)="showListRetreive(true)" class="btn">مُراجعة الفواتير</a>
+      <a (click)="removeList()" class="btn">إخلاء القائمة</a>
+    </div>
+  </section>
+
+  <app-retreive-stock-bill *ngIf="openRetreive" (DeletedStockBills)="resetBills($event)"
+    (showRetreive)="showListRetreive($event)" [rowData]="reteiveList"></app-retreive-stock-bill>
+
+</body>

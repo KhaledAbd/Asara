@@ -1,0 +1,57 @@
+<body>
+  <section class="container">
+    <h2>حركة المخازن</h2>
+
+    <form [formGroup]="stockItemForm" (ngSubmit)="onSubmit()">
+
+      <div class="custom-control form-group">
+        <label for="dateOfStockBill">تاريخ الفاتورة</label>
+        <input type="date" id="dateOfStockBill" class="form-control" formControlName="dateOfStockBill" [ngClass]="{
+              'is-invalid':
+              dateOfStockBill.errors &&
+              dateOfStockBill.touched
+            }" />
+      </div>
+
+      <div class="custom-control form-group">
+        <label for="billStockType">نوع فاتورة المخزن</label>
+        <select class="form-control" id="billStockType" formControlName="billStockType" [ngClass]="{
+              'is-invalid':
+              billStockType.errors &&
+              billStockType.touched
+            }" (change)="worker.enable()">
+          <option value="" selected disabled>اختر نوع الفاتورة</option>
+          <option value="0">فاتورة ايداع</option>
+          <option value="1">فاتورة سحب</option>
+        </select>
+      </div>
+
+      <div class="custom-control form-group">
+        <label for="worker">اسم العامل</label>
+        <input id="worker" class="form-control" class="form-control" list="workers" (keyup)="searchForWorker($event)"
+          formControlName="worker" placeholder="ادخل اسم العميل" [ngClass]="{
+              'is-invalid':
+              worker.errors &&
+              worker.touched
+            }">
+        <datalist id="workers">
+          <option *ngFor="let worker of workers">{{worker.worker}}</option>
+        </datalist>
+      </div>
+    </form>
+
+    <button type="submit" class="new-button btn" [disabled]="stockItemForm.invalid || stockItemForm.disabled">عرض
+      الفاتورة</button>
+
+    <div *ngIf="rowData">
+      <div>
+        <ag-grid-angular #agGrid class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
+          [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true"> </ag-grid-angular>
+      </div>
+    </div>
+  </section>
+
+  <app-detail-stock-bill *ngIf="open && stockBill" [stockBill]="stockBill" (openDetailstockBill)="openEvent($event)"
+    (stockBillEdit)="EditStockBillEvent($event)"></app-detail-stock-bill>
+
+</body>
