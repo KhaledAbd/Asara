@@ -52,7 +52,7 @@ namespace Asara.API.Controllers
                 catch (Exception e)
                 {
                     isBackup = false;
-                    messages.Add(e.Message + " ===> Items")
+                    messages.Add(e.Message + " ===> Items");
                 }
                 path = Path.Combine(folder, "Account.csv");
                 try
@@ -118,7 +118,7 @@ namespace Asara.API.Controllers
                 catch (Exception e)
                 {
                     isBackup = false;
-                    messages.Add(messages + "=====> BillItems");
+                    messages.Add(e.Message + "=====> BillItems");
                 }
                 path = Path.Combine(folder, "Bills.csv");
                 try
