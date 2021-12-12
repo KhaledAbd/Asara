@@ -7078,26 +7078,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\metwaly\\.nuget\\packages\\": {}
+    "/home/khaled/.nuget/packages/": {},
+    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "d:\\Assara-Repo\\Asara.API\\Asara.API.csproj",
+      "projectUniqueName": "/home/khaled/Downloads/Asara/Asara.API/Asara.API.csproj",
       "projectName": "Asara.API",
-      "projectPath": "d:\\Assara-Repo\\Asara.API\\Asara.API.csproj",
-      "packagesPath": "C:\\Users\\metwaly\\.nuget\\packages\\",
-      "outputPath": "d:\\Assara-Repo\\Asara.API\\obj\\",
+      "projectPath": "/home/khaled/Downloads/Asara/Asara.API/Asara.API.csproj",
+      "packagesPath": "/home/khaled/.nuget/packages/",
+      "outputPath": "/home/khaled/Downloads/Asara/Asara.API/obj/",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\metwaly\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/khaled/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -7179,16 +7181,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[5.0.0, 5.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"
@@ -7197,7 +7189,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/5.0.403/RuntimeIdentifierGraph.json"
       }
     }
   }

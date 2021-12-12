@@ -514,7 +514,7 @@ namespace Asara.API.Controllers
                     {
                         string[] record = line.Split(',');
                         int.TryParse(record[0], out id);
-                        if(dataContext.StockItems.FindAsync(id) == null)
+                        if(await dataContext.StockItems.FindAsync(id) == null)
                             await dataContext.StockItems.AddAsync(new StockItem()
                             {
                                 Id = int.Parse(record[0]),
