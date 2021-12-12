@@ -281,7 +281,7 @@ namespace Asara.API.Controllers
                     while ((line = (await reader.ReadLineAsync())) != null){
                         string [] record = line.Split(',');
                         int.TryParse(record[0], out id);
-                        if(await dataContext.Units.FindAsync(id) != null){
+                        if(await dataContext.Units.FindAsync(id) == null){
                             await dataContext.Units.AddAsync(new Unit(){
                                 Id = id,
                                 Name = record[1]
@@ -306,14 +306,16 @@ namespace Asara.API.Controllers
                     while ((line = (await reader.ReadLineAsync())) != null)
                     {
                         string[] record = line.Split(',');
-                        await dataContext.Items.AddAsync(new Item()
-                        {
-                            Id = int.Parse(record[0]),
-                            Name = record[1],
-                            Price = double.Parse(record[2]),
-                            Quentity = double.Parse(record[3]),
-                            UnitId = int.Parse(record[4]),
-                        });
+                        int.TryParse(record[0], out id);
+                        if(await dataContext.Items.FindAsync(id) == null)
+                            await dataContext.Items.AddAsync(new Item()
+                            {
+                                Id = int.Parse(record[0]),
+                                Name = record[1],
+                                Price = double.Parse(record[2]),
+                                Quentity = double.Parse(record[3]),
+                                UnitId = int.Parse(record[4]),
+                            });
                     }
                 }
                 fileStream.Close();
@@ -333,15 +335,17 @@ namespace Asara.API.Controllers
                     while ((line = (await reader.ReadLineAsync())) != null)
                     {
                         string[] record = line.Split(',');
-                        await dataContext.Users.AddAsync(new User()
-                        {
-                            Id = int.Parse(record[0]),
-                            Money = double.Parse(record[1]),
-                            NormalizedUserName = record[2],
-                            PasswordHash = record[3],
-                            UserName = record[4],
-                            SecurityStamp = record[5]
-                        });
+                         int.TryParse(record[0], out id);
+                        if(await dataContext.Users.FindAsync(id) == null)                        
+                            await dataContext.Users.AddAsync(new User()
+                            {
+                                Id = int.Parse(record[0]),
+                                Money = double.Parse(record[1]),
+                                NormalizedUserName = record[2],
+                                PasswordHash = record[3],
+                                UserName = record[4],
+                                SecurityStamp = record[5]
+                            });
                     }
                 }
                 fileStream.Close();
@@ -361,15 +365,17 @@ namespace Asara.API.Controllers
                     while ((line = (await reader.ReadLineAsync())) != null)
                     {
                         string[] record = line.Split(',');
-                        await dataContext.Account.AddAsync(new Account()
-                        {
-                            Id = int.Parse(record[0]),
-                            CreatedAt = DateTime.Parse(record[1]),
-                            IsIntial = bool.Parse(record[2]),
-                            LastUserMoney = double.Parse(record[3]),
-                            Money = double.Parse(record[4]),
-                            UserId = int.Parse(record[5])
-                        });
+                         int.TryParse(record[0], out id);
+                        if(await dataContext.Account.FindAsync(id) == null)
+                            await dataContext.Account.AddAsync(new Account()
+                            {
+                                Id = int.Parse(record[0]),
+                                CreatedAt = DateTime.Parse(record[1]),
+                                IsIntial = bool.Parse(record[2]),
+                                LastUserMoney = double.Parse(record[3]),
+                                Money = double.Parse(record[4]),
+                                UserId = int.Parse(record[5])
+                            });
                     }
                 }
                 fileStream.Close();
@@ -389,16 +395,18 @@ namespace Asara.API.Controllers
                     while ((line = (await reader.ReadLineAsync())) != null)
                     {
                         string[] record = line.Split(',');
-                        await dataContext.Bills.AddAsync(new Bill()
-                        {
-                            Id = int.Parse(record[0]),
-                            ClientName = record[1],
-                            Cost = double.Parse(record[2]),
-                            CreatedAt = DateTime.Parse(record[3]),
-                            Paid = double.Parse(record[4]),
-                            Type = int.Parse(record[5]),
-                            UserId = int.Parse(record[6])
-                        });
+                        int.TryParse(record[0], out id);
+                        if(await dataContext.Bills.FindAsync(id) == null)
+                            await dataContext.Bills.AddAsync(new Bill()
+                            {
+                                Id = int.Parse(record[0]),
+                                ClientName = record[1],
+                                Cost = double.Parse(record[2]),
+                                CreatedAt = DateTime.Parse(record[3]),
+                                Paid = double.Parse(record[4]),
+                                Type = int.Parse(record[5]),
+                                UserId = int.Parse(record[6])
+                            });
                     }
                 }
                 fileStream.Close();
@@ -418,14 +426,16 @@ namespace Asara.API.Controllers
                     while ((line = (await reader.ReadLineAsync())) != null)
                     {
                         string[] record = line.Split(',');
-                        await dataContext.BillItems.AddAsync(new BillItem()
-                        {
-                            Id = int.Parse(record[0]),
-                            BillId = int.Parse(record[1]),
-                            ItemId = int.Parse(record[2]),
-                            Price = double.Parse(record[3]),
-                            Quentity = int.Parse(record[4]),
-                        });
+                        int.TryParse(record[0], out id);
+                        if(await dataContext.BillItems.FindAsync(id) == null)
+                            await dataContext.BillItems.AddAsync(new BillItem()
+                            {
+                                Id = int.Parse(record[0]),
+                                BillId = int.Parse(record[1]),
+                                ItemId = int.Parse(record[2]),
+                                Price = double.Parse(record[3]),
+                                Quentity = int.Parse(record[4]),
+                            });
                     }
                 }
                 fileStream.Close();
@@ -445,14 +455,16 @@ namespace Asara.API.Controllers
                     while ((line = (await reader.ReadLineAsync())) != null)
                     {
                         string[] record = line.Split(',');
-                        await dataContext.ExtraExpenses.AddAsync(new ExtraExpenses()
-                        {
-                            Id = int.Parse(record[0]),
-                            CreatedAt = DateTime.Parse(record[1]),
-                            Paid = double.Parse(record[2]),
-                            Reason = record[3],
-                            UserId = int.Parse(record[4])
-                        });
+                        int.TryParse(record[0], out id);
+                        if(await dataContext.BillItems.FindAsync(id) == null)
+                            await dataContext.ExtraExpenses.AddAsync(new ExtraExpenses()
+                            {
+                                Id = int.Parse(record[0]),
+                                CreatedAt = DateTime.Parse(record[1]),
+                                Paid = double.Parse(record[2]),
+                                Reason = record[3],
+                                UserId = int.Parse(record[4])
+                            });
                     }
                 }
                 fileStream.Close();
@@ -472,14 +484,16 @@ namespace Asara.API.Controllers
                     while ((line = (await reader.ReadLineAsync())) != null)
                     {
                         string[] record = line.Split(',');
-                        await dataContext.StockBills.AddAsync(new StockBill()
-                        {
-                            Id = int.Parse(record[0]),
-                            CreatedAt = DateTime.Parse(record[1]),
-                            Type = int.Parse(record[2]),
-                            UserId = int.Parse(record[3]),
-                            Worker = record[4]
-                        });
+                        int.TryParse(record[0], out id);
+                        if(await dataContext.StockBills.FindAsync(id) == null)
+                            await dataContext.StockBills.AddAsync(new StockBill()
+                            {
+                                Id = int.Parse(record[0]),
+                                CreatedAt = DateTime.Parse(record[1]),
+                                Type = int.Parse(record[2]),
+                                UserId = int.Parse(record[3]),
+                                Worker = record[4]
+                            });
                     }
                 }
                 fileStream.Close();
@@ -499,13 +513,15 @@ namespace Asara.API.Controllers
                     while ((line = (await reader.ReadLineAsync())) != null)
                     {
                         string[] record = line.Split(',');
-                        await dataContext.StockItems.AddAsync(new StockItem()
-                        {
-                            Id = int.Parse(record[0]),
-                            ItemId = int.Parse(record[1]),
-                            Quentity = int.Parse(record[2]),
-                            StockBillId = int.Parse(record[3]),
-                        });
+                        int.TryParse(record[0], out id);
+                        if(dataContext.StockItems.FindAsync(id) == null)
+                            await dataContext.StockItems.AddAsync(new StockItem()
+                            {
+                                Id = int.Parse(record[0]),
+                                ItemId = int.Parse(record[1]),
+                                Quentity = int.Parse(record[2]),
+                                StockBillId = int.Parse(record[3]),
+                            });
                     }
                 }
                 fileStream.Close();
@@ -519,9 +535,10 @@ namespace Asara.API.Controllers
             try{
                 await dataContext.SaveChangesAsync();
             }catch(Exception e){
-                messages.Add(e.Message + "=======> SaveChanges Error");
+                isRestore=false;
+                messages.Add(e + "=======> SaveChanges Error");
             }
-            return Ok(new { isRestore = isRestore, model = "items" });
+            return Ok(new { isRestore = isRestore, messages });
         }
     }
 }
