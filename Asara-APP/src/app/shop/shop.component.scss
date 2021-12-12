@@ -1,98 +1,155 @@
 * {
-    direction: rtl;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  direction: rtl;
 }
 
 *:focus {
-    border: none;
-    outline: none;
+  outline: 0;
+  border: 0;
+}
+
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
-    width: 476px;
-    height: auto;
-    margin-top: 4%;
-    background-color: rgba(216, 236, 247, 0.4);
-    padding: 20px 30px;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
+  width: 400px;
+  height: auto;
+  padding: 10px;
+  text-align: center;
+  background-color: #81b29a;
+  /* border: 1px solid rgba(226, 233, 236, 0.445); */
+  //   background-color: cadetblue;
+  border-radius: 10px;
+  animation: swing-in-back 1s ease 0s 1 alternate forwards;
 }
 
-h3 {
-    margin-right: 5%;
-    margin-bottom: 40px;
-    font-size: 23px;
-    text-align: center;
+.new-section {
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: stretch;
 }
 
-[class^="icon-"],
-[class*=" icon-"] {
-    display: inline-block;
-    width: 100%;
+.container form {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 
-.error[_ngcontent-cyn-c61] {
-    margin-top: 10px;
-}
-
-i {
-    text-align: center;
-}
-
-.addIcon {
-    font-size: 30px;
-    color: darkgreen;
-    float: left;
-    margin: 13px;
-}
-
-.addIcon:hover {
-    opacity: 0.8;
-    cursor: pointer;
+h2 {
+  font-size: 19px;
+  font-weight: bold;
+  text-align: center;
+  align-self: center;
+  margin: 20px 0 5px;
+  color: #d5ffd7;
 }
 
 .error {
-    color: rgb(255, 0, 0);
-    /* background-color: rgb(250, 225, 225); */
-    padding: 10px 25px;
-    margin-top: 25px;
-    font-size: 17px;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 70px;
+  color: rgb(180, 59, 59);
+  padding: 10px 25px;
+  font-size: 13px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 70px;
 }
 
 .error:hover {
-    cursor: pointer;
-    opacity: 0.7;
+  cursor: pointer;
+  pointer-events: none;
+  opacity: 0.7;
 }
 
-.item {
-    width: 340px;
-    border-radius: 20px;
-    margin-bottom: 10px;
-    padding: 10px 30px;
-    text-align: center;
-}
-
-
-/* input {
-    display: inline;
-} */
-
-input[type=text]:focus {
-    box-shadow: 15px rgba(81, 203, 238, 1);
-    border: 1px solid rgba(81, 203, 238, 1);
+input,
+input:focus,
+input:valid,
+input:active {
+  width: 100%;
+  position: relative;
+  margin: 0 auto 15px;
+  padding: 10px 15px;
+  background-color: transparent;
+  border-radius: 2px;
+  border: none;
+  border-bottom: 1px solid #9cdd9f;
+  outline: 0;
+  caret-color: #9cdd9f;
+  color: #9cdd9f;
+  font-weight: bold;
+  font-family: "Cairo", sans-serif;
 }
 
 label {
-    text-indent: 10px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  position: absolute;
+  right: 0;
+}
+
+input[type="text"]::placeholder {
+  font-size: 14px;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 10%;
 }
 
 .form-group input {
-    width: 440px;
+  width: 90%;
+  position: relative;
+  margin: auto;
+  background-color: transparent;
+  border-radius: 2px;
+  border: none;
+  border-bottom: 1px solid #43a047;
+  outline: 0;
+  padding: 8px 20px;
+  caret-color: #43a047;
+  color: #2c682f;
+  font-weight: bold;
+  font-family: "Cairo", sans-serif;
+}
+
+.form-group input:placeholder-shown {
+  font-size: 17px;
+}
+
+label {
+  text-align: start;
+  font-weight: bold;
+  font-size: 14px;
+  color: #d5ffd7;
+  pointer-events: none;
+  position: absolute;
+  top: 20%;
+  right: 4%;
+  transform: translateY(-25px);
+  transition: color 0.3s ease-in-out;
+}
+
+.form-group input:focus {
+  outline: none !important;
+}
+
+button[type="submit"] {
+  margin-top: 5%;
+  padding: 7px 0;
 }

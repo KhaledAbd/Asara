@@ -100,7 +100,10 @@ a .icon:hover {
 }
 
 .log-out {
+  display: inline-block;
   cursor: pointer;
+  padding: 0;
+  margin-bottom: 15px;
 }
 
 .dropdown-content a:hover {
@@ -110,7 +113,6 @@ a .icon:hover {
 }
 
 .dropdown:hover .dropdown-content {
-  /* display: block; */
   visibility: visible;
   opacity: 1;
 }

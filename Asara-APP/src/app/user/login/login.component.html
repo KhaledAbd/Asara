@@ -1,48 +1,53 @@
-<div class="container">
+<body>
+    <div class="container">
 
-    <div class="screen">
-        <div class="screen__content">
+        <div class="screen">
+            <div class="screen__content">
 
-            <form class="login" [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+                <form class="login" [formGroup]="formLogin" (ngSubmit)="onSubmit()">
 
-                <div class="login__field">
-                    <i class="login__icon fas fa-user m-2"></i>
-                    <input type="text" class="login__input" placeholder="Username" formControlName="username" [ngClass]="{ 'login__input__error': username.errors && username.touched }">
-                </div>
-
-                <div *ngIf="username.touched && username.errors">
-                    <div class="error" *ngIf="username.errors.required" (click)="username.reset()">
-                        أَدْخِل اسمَ المٌستخدم *
+                    <div class="login__field">
+                        <i class="login__icon fas fa-user"></i>
+                        <input type="text" class="login__input" placeholder="Username" formControlName="username"
+                            [ngClass]="{ 'login__input__error': username.errors && username.touched }">
                     </div>
-                </div>
 
-                <div class="login__field">
-                    <i class="login__icon fas fa-lock m-2"></i>
-                    <input type="password" class="login__input" placeholder="Password" formControlName="password" [ngClass]="{ 'login__input__error': password.errors && password.touched }">
-                </div>
-
-                <div *ngIf="password.touched && password.errors">
-                    <div class="error" *ngIf="password.errors.required" (click)="password.reset()">
-                        أَدْخِل كلمة المرور *
+                    <div *ngIf="username.touched && username.errors">
+                        <div class="error" *ngIf="username.errors.required" (click)="username.reset()">
+                            أَدْخِل اسمَ المٌستخدم *
+                        </div>
                     </div>
-                </div>
 
-                <div class="error" *ngIf="formLogin.errors?.isLogin">
-                    * خطأ في كلمة المُرور أو إسم المُستخدم
-                </div>
+                    <div class="login__field">
+                        <i class="login__icon fas fa-lock"></i>
+                        <input type="password" class="login__input" placeholder="Password" formControlName="password"
+                            [ngClass]="{ 'login__input__error': password.errors && password.touched }">
+                    </div>
 
-                <button class="button login__submit" [disabled]="formLogin.invalid || formLogin.disabled" type="submit">
-                      <span class="button__text">تسجيل</span><i class="button__icon fas fa-chevron-right"></i>
-              </button>
+                    <div *ngIf="password.touched && password.errors">
+                        <div class="error" *ngIf="password.errors.required" (click)="password.reset()">
+                            أَدْخِل كلمة المرور *
+                        </div>
+                    </div>
 
-            </form>
-        </div>
+                    <div class="error" *ngIf="formLogin.errors?.isLogin">
+                        * خطأ في كلمة المُرور أو إسم المُستخدم
+                    </div>
 
-        <div class="screen__background">
-            <span class="screen__background__shape screen__background__shape4"></span>
-            <span class="screen__background__shape screen__background__shape3"></span>
-            <span class="screen__background__shape screen__background__shape2"></span>
-            <span class="screen__background__shape screen__background__shape1"></span>
+                    <button class="button login__submit" [disabled]="formLogin.invalid || formLogin.disabled"
+                        type="submit">
+                        <span class="button__text">تسجيل الدُخول</span><i class="button__icon fas fa-chevron-right"></i>
+                    </button>
+
+                </form>
+            </div>
+
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>
         </div>
     </div>
-</div>
+</body>

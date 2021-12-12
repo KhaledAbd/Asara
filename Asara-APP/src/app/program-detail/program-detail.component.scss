@@ -1,237 +1,132 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  direction: rtl;
+}
+
+*:focus {
+  outline: 0;
+  border: 0;
+}
+
+.form-control:focus {
+  border-color: inherit;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .container {
-    width: 80%;
-    // background-color: blueviolet;
-    height: 450px;
-    margin: 90px auto;
-    margin-right: 20px;
+  width: 550px;
+  height: 500px;
+  padding: 10px;
+  text-align: center;
+  background-color: transparent;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  animation: animation-1 0.5s ease-out 0s 1 alternate forwards;
 }
 
 .item {
-    width: 80%;
-    background-color: #1D4A61;
-    background-image: linear-gradient(62deg, #3C617D 0%, #8390A2 100%);
-    height: 130px;
-    margin: 20px auto;
-    border: 0;
-    border-radius: 20px;
-    animation: animation-2 0.5s ease-out 0s 1 alternate forwards;
+  width: 100%;
+  direction: ltr;
+  background-color: #1d4a61;
+  background-image: linear-gradient(62deg, #2d704f 0%, #447a66 100%);
+  height: 130px;
+  margin: 20px auto;
+  border: 0;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  animation: animation-2 0.5s ease-out 0s 1 alternate forwards;
 }
 
 .item .my-img {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    margin: 15px;
-    margin-left: 30px;
-    float: left;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  // margin: 15px;
+  margin-left: 0;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .item .my-img.first-img {
-    background-image: url("../../assets/developers-images/khaled-1.jpg");
-    box-shadow: 0 20px 50px rgba(235, 235, 208, 0.7);
+  background-image: url("../../assets/developers-images/khaled-1.jpg");
+  box-shadow: 0 20px 50px rgba(235, 235, 208, 0.219);
 }
 
 .item .my-img.sec-img {
-    background-image: url("../../assets/developers-images/rgb.jpg");
-    box-shadow: 0 20px 50px rgba(235, 235, 208, 0.7);
+  background-image: url("../../assets/developers-images/rgb.jpg");
+  box-shadow: 0 20px 50px rgba(235, 235, 208, 0.219);
+  margin-right: 20px;
 }
 
 .item .my-img.third-img {
-    background-image: url("../../assets/developers-images/khaled-2.jpg");
-    box-shadow: 0 20px 50px rgba(235, 235, 208, 0.7);
+  background-image: url("../../assets/developers-images/khaled-2.jpg");
+  box-shadow: 0 20px 50px rgba(235, 235, 208, 0.219);
+  margin-right: 20px;
 }
 
 .item .info {
-    float: left;
-    width: 390px;
-    color: #fefeff;
-    letter-spacing: 1.1px;
-    margin-left: 40px;
-    margin-top: 4px;
+  flex-basis: 50%;
+  align-self: flex-end;
+  color: #fefeff;
+  letter-spacing: 1.1px;
+  margin-left: 40px;
+  margin-top: 4px;
+  align-self: flex-end;
 }
 
-.item .info h3 {
-    text-transform: capitalize;
-    margin-top: 6px;
-    font-weight: bold;
-    font-size: 17px;
+.item .info h3,
+.item .info p {
+  direction: ltr;
+  text-transform: capitalize;
+  margin-top: 6px;
+  font-weight: bold;
+  font-size: 17px;
+  font-family: "Cairo", sans-serif;
+  align-self: flex-start;
+}
+
+.item .info .job-person,
+.item .info .mob-number,
+.item .info .email {
+  position: relative;
+}
+
+.item .info .job-person::before,
+.item .info .mob-number::before,
+.item .info .email::before,
+.item .info .dev-name {
+  font-weight: 900;
+  font-family: "Font Awesome 5 Free";
+  margin-right: 8px;
+}
+
+.item .info .job-person::before {
+  content: "\f5fc";
+}
+
+.item .info .mob-number::before {
+  content: "\f3cd";
 }
 
 .item .info .email {
-    text-transform: none;
+  text-transform: none;
 }
 
-// ------------------------------------------------------------------------------------------------
-#DataTable {
-    position:relative;
-    padding: 15px;
-    box-sizing: border-box;
-  }
-  
-  table { 
-    width: 100%; 
-    border-collapse: collapse; 
-  }
-  
-  th { 
-    background: #333; 
-    color: white; 
-    font-weight: bold; 
-    cursor: cell;
-  }
-  td, th { 
-    padding: 6px; 
-    border: 1px solid #ccc; 
-    text-align: left; 
-    box-sizing: border-box;
-  }
-  
-  tr:nth-of-type(odd) { 
-    background: #eee; 
-  }
-  
-      @media
-        only screen 
-      and (max-width: 760px), (min-device-width: 768px) 
-      and (max-device-width: 1024px)  {
-  
-        table {
-          margin-top: 106px;
-        }
-          /* Force table to not be like tables anymore */
-          table, thead, tbody, th, td, tr {
-              display: block;
-          }
-  
-          /* Hide table headers (but not display: none;, for accessibility) */
-          thead tr {
-              position: absolute;
-              top: -9999px;
-              left: -9999px;
-          }
-  
-      tr {
-        margin: 0 0 1rem 0;
-        overflow: auto;
-        border-bottom: 1px solid #ccc;
-      }
-        
-        
-        
-        tbody tr:before {
-          counter-increment: my-sec-counter;
-          content: "";
-          background-color:#333;
-          display: block;
-          height: 1px;
-        }
-  
-        
-      tr:nth-child(odd) {
-        background: #ccc;
-      }
-      
-          td {
-              /* Behave  like a "row" */
-              border: none;
-              border-bottom: 1px solid #eee;
-        margin-right: 0%;
-        display: block;
-        border-right: 1px solid #ccc;
-        border-left: 1px solid #ccc;
-        box-sizing:border-box;
-          }
-  
-          td:before {
-              /* Top/left values mimic padding */
-        font-weight: bold;
-              width: 50%;
-        float:left;
-        box-sizing:border-box;
-        padding-left: 5px;
-          }
-  
-          /*
-          Label the data
-      You could also use a data-* attribute and content for this. That way "bloats" the HTML, this way means you need to keep HTML and CSS in sync. Lea Verou has a clever way to handle with text-shadow.
-          */
-          td:nth-of-type(1):before { content: "First Name"; }
-          td:nth-of-type(2):before { content: "Last Name"; }
-          td:nth-of-type(3):before { content: "Job Title"; }
-          td:nth-of-type(4):before { content: "Favorite Color"; }
-          td:nth-of-type(5):before { content: "Wars of Trek?"; }
-          td:nth-of-type(6):before { content: "Secret Alias"; }
-          td:nth-of-type(7):before { content: "Date of Birth"; }
-          td:nth-of-type(8):before { content: "Dream Vacation City"; }
-          td:nth-of-type(9):before { content: "GPA"; }
-          td:nth-of-type(10):before { content: "Arbitrary Data"; }
-      
-      .box ul.pagination {
-        position: relative !important;
-        bottom: auto !important;
-        right: auto !important;
-        display: block !important;
-        width: 100%;
-      } 
-        
-      .box {
-        text-align: center;
-        position: fixed;
-        width: 100%;
-        background-color: #fff;
-        top: 0px;
-        left:0px;
-        padding: 15px;
-        box-sizing: border-box;
-        border-bottom: 1px solid #ccc;
-      }
-        
-      .box ul.pagination {
-        display: block;
-        margin: 0px;
-      }
-        
-       .box .dvrecords {
-        display: block;
-         margin-bottom: 10px;
-      }
-      .pagination>li {
-          display: inline-block;
-      }
-      }
-  
-  .top-filters {
-    font-size: 0px;
-  }
-  
-  .search-field {
-    text-align: right;
-    margin-bottom: 5px;
-  }
-  
-  .dd-number-of-recoeds {
-    font-size: 12px;
-  }
-  
-  .search-field,
-  .dd-number-of-recoeds {
-    display: inline-block;
-    width: 50%;
-  }
-  
-  .box ul.pagination {
-    position: absolute;
-    bottom: -45px;
-    right: 15px;
-  }
-  
-  .box .dvrecords {
-    padding: 5px 0;
-  }
-  
-  .box .dvrecords .records{
-    margin-right: 5px;
-  }
+.item .info .email::before {
+  content: "\f0e0";
+}
