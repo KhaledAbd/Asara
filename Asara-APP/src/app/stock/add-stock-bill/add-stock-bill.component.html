@@ -4,17 +4,6 @@
     <header>
       <h2 *ngIf="typePage == 0" class="text-center">إيداع بالمخزن</h2>
       <h2 *ngIf="typePage == 1" class="text-center">سحب من المخزن</h2>
-<<<<<<< HEAD
-
-      <div class="custom-control form-group custom-worker-lyout">
-        <label for="worker">إسم العامل</label>
-        <input type="text" id="worker" class="form-control" formControlName="worker" placeholder="إسم العامل">
-      </div>
-    </header>
-
-    <form [formGroup]="stockBillForm" (ngSubmit)="onSubmit()" id="new-form">
-
-=======
     </header>
 
     <form [formGroup]="stockBillForm" (ngSubmit)="onSubmit()" id="new-form">
@@ -24,7 +13,6 @@
             <label for="worker">إسم العامل</label>
             <input type="text" id="worker" class="form-control" formControlName="worker" placeholder="إسم العامل">
       </div>
->>>>>>> AsaraV2
       <table id="itemTable">
         <thead>
           <tr>

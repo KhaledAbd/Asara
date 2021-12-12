@@ -113,10 +113,6 @@ a .icon:hover {
 }
 
 .dropdown:hover .dropdown-content {
-<<<<<<< HEAD
-=======
-  /* display: block; */
->>>>>>> AsaraV2
   visibility: visible;
   opacity: 1;
 }
