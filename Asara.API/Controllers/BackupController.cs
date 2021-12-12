@@ -269,19 +269,24 @@ namespace Asara.API.Controllers
             var path = Path.Combine(folder, "Units.csv");
             var isRestore = true;
             string line;
+            int id;
+            List<string> messages = new List<string>();
             try
             {
                 FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
                 using (StreamReader reader = new StreamReader(fileStream))
                 {
                     Console.WriteLine(await reader.ReadLineAsync());
+                    
                     while ((line = (await reader.ReadLineAsync())) != null){
                         string [] record = line.Split(',');
-                        Console.WriteLine(record[0] + "\n\n\n\n\n\n\n");
-                        await dataContext.Units.AddAsync(new Unit(){
-                            Id = Convert.ToInt32(record[0]),
-                            Name = record[1]
-                        });
+                        int.TryParse(record[0], out id);
+                        if(await dataContext.Units.FindAsync(id) != null){
+                            await dataContext.Units.AddAsync(new Unit(){
+                                Id = id,
+                                Name = record[1]
+                            });
+                        }
                     }
                 }
                 fileStream.Close();
@@ -289,7 +294,7 @@ namespace Asara.API.Controllers
             catch (Exception e)
             {
                 isRestore = false;
-                return Ok(new { isRestore = isRestore, message = e.Message, model = "unit" });
+                messages.Add(e.Message + "=======> Unit");
             }
             path = Path.Combine(folder, "Items.csv");
             try
@@ -316,11 +321,207 @@ namespace Asara.API.Controllers
             catch (Exception e)
             {
                 isRestore = false;
-                return Ok(new { isRestore = isRestore, message = e.Message, model = "items" });
+                messages.Add(e.Message + "=======> Items");
             }
-            await dataContext.SaveChangesAsync();
+            path = Path.Combine(folder, "Users.csv");
+            try
+            {
+                FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    Console.WriteLine(await reader.ReadLineAsync());
+                    while ((line = (await reader.ReadLineAsync())) != null)
+                    {
+                        string[] record = line.Split(',');
+                        await dataContext.Users.AddAsync(new User()
+                        {
+                            Id = int.Parse(record[0]),
+                            Money = double.Parse(record[1]),
+                            NormalizedUserName = record[2],
+                            PasswordHash = record[3],
+                            UserName = record[4],
+                            SecurityStamp = record[5]
+                        });
+                    }
+                }
+                fileStream.Close();
+            }
+            catch (Exception e)
+            {
+                isRestore = false;
+                messages.Add(e.Message + "=======> Users");
+            }
+            path = Path.Combine(folder, "Account.csv");
+            try
+            {
+                FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    Console.WriteLine(await reader.ReadLineAsync());
+                    while ((line = (await reader.ReadLineAsync())) != null)
+                    {
+                        string[] record = line.Split(',');
+                        await dataContext.Account.AddAsync(new Account()
+                        {
+                            Id = int.Parse(record[0]),
+                            CreatedAt = DateTime.Parse(record[1]),
+                            IsIntial = bool.Parse(record[2]),
+                            LastUserMoney = double.Parse(record[3]),
+                            Money = double.Parse(record[4]),
+                            UserId = int.Parse(record[5])
+                        });
+                    }
+                }
+                fileStream.Close();
+            }
+            catch (Exception e)
+            {
+                isRestore = false;
+                messages.Add(e.Message + "=======> Account");
+            }
+            path = Path.Combine(folder, "Bills.csv");
+            try
+            {
+                FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    Console.WriteLine(await reader.ReadLineAsync());
+                    while ((line = (await reader.ReadLineAsync())) != null)
+                    {
+                        string[] record = line.Split(',');
+                        await dataContext.Bills.AddAsync(new Bill()
+                        {
+                            Id = int.Parse(record[0]),
+                            ClientName = record[1],
+                            Cost = double.Parse(record[2]),
+                            CreatedAt = DateTime.Parse(record[3]),
+                            Paid = double.Parse(record[4]),
+                            Type = int.Parse(record[5]),
+                            UserId = int.Parse(record[6])
+                        });
+                    }
+                }
+                fileStream.Close();
+            }
+            catch (Exception e)
+            {
+                isRestore = false;
+                messages.Add(e.Message + "=======> Bills");
+            }
+            path = Path.Combine(folder, "BillItems.csv");
+            try
+            {
+                FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    Console.WriteLine(await reader.ReadLineAsync());
+                    while ((line = (await reader.ReadLineAsync())) != null)
+                    {
+                        string[] record = line.Split(',');
+                        await dataContext.BillItems.AddAsync(new BillItem()
+                        {
+                            Id = int.Parse(record[0]),
+                            BillId = int.Parse(record[1]),
+                            ItemId = int.Parse(record[2]),
+                            Price = double.Parse(record[3]),
+                            Quentity = int.Parse(record[4]),
+                        });
+                    }
+                }
+                fileStream.Close();
+            }
+            catch (Exception e)
+            {
+                isRestore = false;
+                messages.Add(e.Message + "=======> BillItems");
+            }
+            path = Path.Combine(folder, "ExtraExpenses.csv");
+            try
+            {
+                FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    Console.WriteLine(await reader.ReadLineAsync());
+                    while ((line = (await reader.ReadLineAsync())) != null)
+                    {
+                        string[] record = line.Split(',');
+                        await dataContext.ExtraExpenses.AddAsync(new ExtraExpenses()
+                        {
+                            Id = int.Parse(record[0]),
+                            CreatedAt = DateTime.Parse(record[1]),
+                            Paid = double.Parse(record[2]),
+                            Reason = record[3],
+                            UserId = int.Parse(record[4])
+                        });
+                    }
+                }
+                fileStream.Close();
+            }
+            catch (Exception e)
+            {
+                isRestore = false;
+                messages.Add(e.Message + "=======> ExtraExpenses");
+            }
+            path = Path.Combine(folder, "StockBills.csv");
+            try
+            {
+                FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    Console.WriteLine(await reader.ReadLineAsync());
+                    while ((line = (await reader.ReadLineAsync())) != null)
+                    {
+                        string[] record = line.Split(',');
+                        await dataContext.StockBills.AddAsync(new StockBill()
+                        {
+                            Id = int.Parse(record[0]),
+                            CreatedAt = DateTime.Parse(record[1]),
+                            Type = int.Parse(record[2]),
+                            UserId = int.Parse(record[3]),
+                            Worker = record[4]
+                        });
+                    }
+                }
+                fileStream.Close();
+            }
+            catch (Exception e)
+            {
+                isRestore = false;
+                messages.Add(e.Message + "=======> StockBills");
+            }
+            path = Path.Combine(folder, "StockItems.csv");
+            try
+            {
+                FileStream fileStream = new FileStream(path, FileMode.Open, FileAccess.Read);
+                using (StreamReader reader = new StreamReader(fileStream))
+                {
+                    Console.WriteLine(await reader.ReadLineAsync());
+                    while ((line = (await reader.ReadLineAsync())) != null)
+                    {
+                        string[] record = line.Split(',');
+                        await dataContext.StockItems.AddAsync(new StockItem()
+                        {
+                            Id = int.Parse(record[0]),
+                            ItemId = int.Parse(record[1]),
+                            Quentity = int.Parse(record[2]),
+                            StockBillId = int.Parse(record[3]),
+                        });
+                    }
+                }
+                fileStream.Close();
+            }
+            catch (Exception e)
+            {
+                isRestore = false;
+                messages.Add(e.Message + "=======> StockBills");
+            }
+            
+            try{
+                await dataContext.SaveChangesAsync();
+            }catch(Exception e){
+                messages.Add(e.Message + "=======> SaveChanges Error");
+            }
             return Ok(new { isRestore = isRestore, model = "items" });
-            ;
         }
     }
 }
