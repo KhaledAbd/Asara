@@ -58,7 +58,7 @@
                             </td>
 
                             <td>
-                                <input type="number" id="price" class="form-control myInput text-center" style="width:87px;" formControlName="price" readonly>
+                                <input type="number" id="price" class="form-control myInput text-center" style="width:87px;" formControlName="price"[ngClass]="{ 'is-invalid': billItemRow.get('price').errors &&  billItemRow.get('price').touched}" [readonly]="billType === 1">
                             </td>
 
                             <td>

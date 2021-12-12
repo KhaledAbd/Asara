@@ -25,6 +25,7 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <div class="form-group">
                     <div class="label-input flex-col">
                         <input id="known-as" class="form-control item" type="text"
@@ -44,12 +45,27 @@
                             [ngClass]="{'is-invalid': f.city.errors && f.city.touched}" formControlName="city">
                         <label for="city">إسمُ المدينة:</label>
                     </div>
+=======
+                <div class="form-group mt-1 col-4">
+                    <label for="known-as">إسمُ الشُهرة:</label>
+                    <input id="known-as" class="form-control item" type="text" [ngClass]="{'is-invalid': f.knownAs.errors && f.knownAs.touched}" formControlName="knownAs" placeholder="إسم الشُهرة">
+
+                    <div class="invalid-feedback" *ngIf="f.knownAs.errors">
+                        <div *ngIf="f.knownAs.errors.required" style="width: auto;" (click)="f.knownAs.reset()">من فضلك أدخِل إسم الشُهرة</div>
+                    </div>
+                </div>
+
+                <div class="form-group mt-1 col-4">
+                    <label for="city">إسمُ المدينة:</label>
+                    <input id="city" class="form-control item" type="tel" [ngClass]="{'is-invalid': f.city.errors && f.city.touched}" formControlName="city" placeholder="إسم المدينة">
+>>>>>>> AsaraV2
 
                     <div class="invalid-feedback" *ngIf="f.city.errors">
                         <div *ngIf="f.city.errors.required" (click)="f.city.reset()">من فضلِك أدخِل المدينة</div>
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <div class="form-group">
                     <div class="label-input flex-col">
                         <input id="input-2" type="tel" class="form-control" minlength="1" formControlName="telephone"
@@ -58,18 +74,29 @@
                     </div>
                 </div>
 
+=======
+                <div class="form-group mt-1 col-4">
+                    <label for="input-2">رقم الهاتف:</label>
+                    <input id="input-2" type="tel" class="form-control item justify-content-center" placeholder="أدخِل رقم الهاتف" minlength="1" formControlName="telephone" [ngClass]="{ 'is-invalid': f.telephone.errors && f.telephone.touched }" />
+                </div>
+>>>>>>> AsaraV2
                 <div *ngIf="f.telephone.touched && f.telephone.errors">
                     <div class="invalid-feedback" *ngIf="f.telephone.errors.required" (click)="f.telephone.reset()">
                         قُمْ بإدخال اسم المحل رجاءً
                     </div>
+<<<<<<< HEAD
                     <div class="invalid-feedback" *ngIf="f.telephone.errors.maxlength || f.telephone.errors.minlength"
                         (click)="f.telephone.reset()">
+=======
+                    <div class="invalid-feedback" *ngIf="f.telephone.errors.maxlength || f.telephone.errors.minlength" (click)="f.telephone.reset()">
+>>>>>>> AsaraV2
                         الإسم الذي أدخلته غيرُ صحيح
                     </div>
                     <div class="invalid-feedback" *ngIf="f.telephone.errors.pattern" (click)="f.telephone.reset()">
                         قُمْ بإدخال رقم المحل صحيح
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <div class="form-group">
                     <div class="label-input flex-col">
@@ -81,20 +108,32 @@
                             (focus)="dateString=dateOfBirth.value;dateOfBirth.type= 'date';" #dateOfBirth>
                         <label for="dateOfBirth">تاريخ الميلاد:</label>
                     </div>
+=======
+                <div class="form-group mt-1 col-4">
+                    <label for="dateOfBirth">تاريخ الميلاد:</label>
+                    <input id="dateOfBirth" type="text" class="form-control item justify-content-center" formControlName="dateOfBirth" placeholder="تاريخ الميلاد" [ngClass]="{'is-invalid': f.dateOfBirth.errors && f.dateOfBirth.touched}" (click)="dateString=dateOfBirth.value;dateOfBirth.type= 'date';"
+                        (blur)="dateOfBirth.type='text';dateOfBirth.value=dateString;" (change)="dateString=dateOfBirth.value;" (focus)="dateString=dateOfBirth.value;dateOfBirth.type= 'date';" #dateOfBirth>
+>>>>>>> AsaraV2
 
                     <div *ngIf="f.dateOfBirth.errors" class="invalid-feedback">
                         <div *ngIf="f.dateOfBirth.errors.required">من فضلك أدخِل إسم المُستخدم *</div>
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-success"
                         [disabled]="editUserform.invalid || !editUserform.touched">تعديل البيانات الآن</button>
+=======
+                <div class="form-group col text-center" style="margin-top: 5px;">
+                    <button type="submit" class="btn btn-success" [disabled]="editUserform.invalid || !editUserform.touched">تعديل البيانات الآن</button>
+>>>>>>> AsaraV2
                 </div>
 
             </form>
 
             <form [formGroup]="formchangePassword" (ngSubmit)="changePassword()" class="form-group" *ngIf="open">
+<<<<<<< HEAD
                 <h2>تعديل كلمة المُرور</h2>
 
                 <div class="form-group">
@@ -103,6 +142,13 @@
                             [ngClass]="{'is-invalid': fp.password.errors && fp.password.touched}">
                         <label for="old-pass">كلمة المُرور السابقة:</label>
                     </div>
+=======
+                <h3 class="text-center justify-center">تعديل كلمة المُرور</h3>
+
+                <div class="form-group mt-2 col-4">
+                    <!-- <label for="old-pass">كلمة المُرور السابقة:</label> -->
+                    <input id="old-pass" type="password" class="form-control item" formControlName="password" placeholder="كلمة المُرور السابقة" [ngClass]="{'is-invalid': fp.password.errors && fp.password.touched}">
+>>>>>>> AsaraV2
 
                     <div *ngIf="fp.password.errors" class="invalid-feedback">
                         <div *ngIf="fp.password.errors.required">أدخِل كلمة المُرور من فضلِك</div>
@@ -110,12 +156,18 @@
 
                 </div>
 
+<<<<<<< HEAD
                 <div class="form-group">
                     <div class="label-input flex-col">
                         <input id="new-pass" type="password" class="form-control" formControlName="newPassword"
                             [ngClass]="{'is-invalid': fp.newPassword.errors && fp.newPassword.touched}">
                         <label for="new-pass">كلمة المُرور الجديدة:</label>
                     </div>
+=======
+                <div class="form-group mt-2 col-4">
+                    <!-- <label for="new-pass">كلمة المُرور الجديدة:</label> -->
+                    <input id="new-pass" type="password" class="form-control item" formControlName="newPassword" placeholder="كلمة المُرور الجديدة" [ngClass]="{'is-invalid': fp.newPassword.errors && fp.newPassword.touched}">
+>>>>>>> AsaraV2
 
                     <div *ngIf="fp.newPassword.errors" class="invalid-feedback">
                         <div *ngIf="fp.newPassword.errors.required"> من فضلِك أدخِل كلمة المُرور الجديدة</div>
@@ -125,6 +177,7 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <div class="form-group">
                     <div class="label-input flex-col">
                         <input id="confirm-new-pass" type="password" class="form-control"
@@ -132,6 +185,11 @@
                             [ngClass]="{'is-invalid': fp.passwordConfirm.errors && fp.passwordConfirm.touched || formchangePassword.hasError('mismatch')}">
                         <label for="confirm-new-pass">تأكيد كلمة المُرور الجديدة:</label>
                     </div>
+=======
+                <div class="form-group mt-2 col-4">
+                    <!-- <label for="confirm-new-pass">تأكيد كلمة المُرور الجديدة:</label> -->
+                    <input id="confirm-new-pass" type="password" class="form-control item" formControlName="passwordConfirm" placeholder="تأكيد كلمة المُرور الجديدة" [ngClass]="{'is-invalid': fp.passwordConfirm.errors && fp.passwordConfirm.touched || formchangePassword.hasError('mismatch')}">
+>>>>>>> AsaraV2
 
                     <div *ngIf="fp.passwordConfirm.errors" class="invalid-feedback">
                         <div *ngIf="fp.passwordConfirm.errors.required">من فضلِك أدخِل كلمة المُرور</div>
@@ -139,13 +197,22 @@
                     </div>
                 </div>
 
+<<<<<<< HEAD
                 <div class="form-group">
                     <button type="submit" class="btn btn-success" [disabled]="formchangePassword.invalid">تغيير كلمة
                         المُرور</button>
+=======
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-success me-2" style="margin-top: 5px;" [disabled]="formchangePassword.invalid">تغيير كلمة المُرور</button>
+>>>>>>> AsaraV2
                 </div>
 
             </form>
         </div>
     </div>
+<<<<<<< HEAD
 
 </body>
+=======
+</div>
+>>>>>>> AsaraV2

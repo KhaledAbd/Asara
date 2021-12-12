@@ -126,6 +126,7 @@ body {
 .login__input:active,
 .login__input:focus,
 .login__input:hover {
+<<<<<<< HEAD
   outline: none;
   border: 1px solid #d1d1d4;
 }
@@ -149,11 +150,37 @@ body {
 
 .login__submit span {
   margin-left: 27%;
+=======
+    outline: none;
+    border: 1px solid #D1D1D4;
+}
+
+.login__submit {
+    background: #fff;
+    font-size: 14px;
+    margin-top: 30px;
+    padding: 16px 20px;
+    border-radius: 26px;
+    border: 1px solid #D4D3E8;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    color: #334257;
+    box-shadow: 0px 0px 1px #334257;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.login__submit span {
+    margin-left: 27%;
+>>>>>>> AsaraV2
 }
 
 .login__submit:active,
 .login__submit:focus,
 .login__submit:hover {
+<<<<<<< HEAD
   border-color: #2b645b;
   outline: none;
 }
@@ -206,3 +233,57 @@ body {
   cursor: pointer;
   opacity: 0.7;
 }
+=======
+    border-color: #6A679E;
+    outline: none;
+}
+
+.button__icon {
+    font-size: 24px;
+    margin-left: auto;
+    color: #334257;
+}
+
+.social-login {
+    position: absolute;
+    height: 140px;
+    width: 160px;
+    text-align: center;
+    bottom: 0px;
+    right: 0px;
+    color: #fff;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-login__icon {
+    padding: 20px 10px;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 0px 0px 8px #7875B5;
+}
+
+.social-login__icon:hover {
+    transform: scale(1.5);
+}
+
+.login__input__error {
+    outline: none;
+    border-bottom-color: #a71611;
+}
+
+.error {
+    color: red;
+    margin: 2px;
+    font-size: 15px;
+}
+
+.error:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+>>>>>>> AsaraV2

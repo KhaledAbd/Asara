@@ -49,6 +49,7 @@ namespace Asara.API.Controllers
                             if ((billItem.ItemNavigation.Quentity -= billItem.Quentity) < 0)
                             {
                                 isNotEnough = true;
+                                billItem.ItemNavigation.Quentity = 0;
                             }
                         }
                         bill.UserNavigation.Money += bill.Paid;
@@ -104,7 +105,8 @@ namespace Asara.API.Controllers
                     {
                         if ((billItem.ItemNavigation.Quentity -= billItem.Quentity) < 0)
                         {
-                            throw new System.Exception("المخزون ليس كافى");
+                            billItem.ItemNavigation.Quentity = 0;
+                            isNotEnough = true;
                         }
                     }
                     bill.UserNavigation.Money += bill.Paid;

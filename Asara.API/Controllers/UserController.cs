@@ -10,6 +10,7 @@ using Asara.API.Models;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Linq;
 
 namespace Asara.API.Controllers
 {
@@ -33,7 +34,7 @@ namespace Asara.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers() => Ok(mapper.Map<IEnumerable<UserForDetailedDto>>(await dataContext.Users.ToListAsync()));
+        public async Task<IActionResult> GetUsers() => Ok(mapper.Map<IEnumerable<UserForDetailedDto>>(await dataContext.Users.Where(u => u.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)).ToListAsync()));
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateInfo(int id, userForUpdateDtos userForUpdateDtos)

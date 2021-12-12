@@ -19,10 +19,9 @@
         <div class="error" *ngIf="name.errors.maxlength || name.errors.minlength" (click)="name.reset()">
           <p>الإسم الذي أدخلته غيرُ صحيح</p>
         </div>
-        
-      </div>
-      <div class="error" *ngIf="itemForm.errors?.exist" (click)="name.reset()">
-        <p>الصنف موجود بالفعل</p>
+        <div class="error" *ngIf="itemForm.errors?.exist" (click)="name.reset()">
+          <p>الصنف موجود بالفعل</p>
+        </div>
       </div>
 
       <div class="form-group flex-col">

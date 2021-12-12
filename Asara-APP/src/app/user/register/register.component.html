@@ -37,6 +37,8 @@
             <div *ngIf="f.username.errors.isExist">
               <p>اسم المستخدم موجود اختر اسمًا اخر</p>
             </div>
+            <div class="error" *ngIf="f.username.errors.pattern">اسم المستخدم لا يمكن ان يكون عربيا</div>
+
           </div>
 
         </div>
@@ -89,7 +91,7 @@
             <div class="error" *ngIf="f.telephone.errors.maxlength || f.telephone.errors.minlength">
               <p>الهاتف الذي أدخلته غيرُ صحيح</p>
             </div>
-            <div class="error" *ngIf="f.telephone.errors.pattern"></div>
+            <div class="error" *ngIf="f.telephone.errors.pattern">تأكد من الرقم</div>
           </div>
         </div>
 

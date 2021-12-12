@@ -84,7 +84,7 @@ export class AddBillComponent implements OnInit {
       {
         itemId: new FormControl('', [Validators.required, Validators.min(0)]),
         quentity: new FormControl('', [Validators.required, Validators.min(1)]),
-        price: new FormControl('')
+        price: new FormControl('', [Validators.min(0)])
       }
     );
   }
