@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       city: ['', Validators.required],
       telephone: new FormControl('', [Validators.required,  Validators.pattern('^[0][1][0152]{1}[0-9]*') ,
                                       Validators.minLength(9), Validators.maxLength(11)]),
-      username: ['', [Validators.minLength(4), Validators.maxLength(8), Validators.required, Validators.pattern('^(?=.{8,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$')]],
+      username: ['', [Validators.minLength(4), Validators.maxLength(8), Validators.required, Validators.pattern('^(?=.{4,8}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$')]],
       password: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(20)]],
       passwordConfirm: ['', [Validators.required]],
     }, { validators: MustMatch('password', 'passwordConfirm') });

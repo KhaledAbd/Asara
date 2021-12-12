@@ -34,7 +34,7 @@ namespace Asara.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetUsers() => Ok(mapper.Map<IEnumerable<UserForDetailedDto>>(await dataContext.Users.Where(u => u.Id == int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)).ToListAsync()));
+        public async Task<IActionResult> GetUsers() => Ok(mapper.Map<IEnumerable<UserForDetailedDto>>(await dataContext.Users.Where(u => u.Id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)).ToListAsync()));
 
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateInfo(int id, userForUpdateDtos userForUpdateDtos)
