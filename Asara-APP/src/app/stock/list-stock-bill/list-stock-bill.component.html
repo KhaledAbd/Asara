@@ -38,12 +38,10 @@
           <option *ngFor="let worker of workers">{{worker.worker}}</option>
         </datalist>
       </div>
+      <button type="submit" class="new-button btn" [disabled]="stockItemForm.invalid || stockItemForm.disabled">عرض
+        الفاتورة</button>
     </form>
-
-    <button type="submit" class="new-button btn" [disabled]="stockItemForm.invalid || stockItemForm.disabled">عرض
-      الفاتورة</button>
-
-    <div *ngIf="rowData">
+     <div *ngIf="rowData">
       <div>
         <ag-grid-angular #agGrid class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs"
           [rowData]="rowData" [getRowNodeId]="getRowNodeId" [enableRtl]="true"> </ag-grid-angular>
