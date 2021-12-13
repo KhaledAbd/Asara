@@ -1,2 +1,0 @@
-# Asara
-AsaraApp
