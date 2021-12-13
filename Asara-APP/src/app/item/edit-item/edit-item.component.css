@@ -1,0 +1,87 @@
+* {
+    direction: rtl;
+}
+
+.modal {
+    display: block;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 5;
+    /* Sit on top */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: hidden;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal .modal-content {
+    background-color: #2d4446;
+    padding: 20px;
+    border: none;
+    width: 27%;
+    /* Could be more or less, depending on screen size */
+    float: left;
+    top: 7%;
+    left: 35%;
+}
+
+.modal-content h2 {
+    color: rgb(233, 233, 233);
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.modal-content .icon {
+    color: rgb(233, 233, 233);
+    font-size: 18px;
+    float: right;
+    padding: 10px;
+    position: fixed;
+    width: 40px;
+}
+
+i:hover {
+    cursor: pointer;
+    opacity: .5;
+}
+
+.form-group label {
+    color: rgb(233, 233, 233);
+    margin-bottom: 10px;
+}
+
+.form-group input,
+.form-group .form-control {
+    width: 100%;
+    margin-right: 5%;
+}
+
+.btn {
+    font-weight: bold;
+}
+
+.closing-btn {
+    background-color: rgb(224, 91, 91);
+    color: rgb(255, 255, 255);
+}
+
+.btn-danger {
+    margin-right: 10px;
+}
+
+label {
+    text-indent: 10px;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+}

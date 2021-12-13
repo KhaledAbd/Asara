@@ -1,0 +1,6 @@
+TestREST
+.idea
+bin
+e2e
+node_modules
+datingApi.db

@@ -1,0 +1,87 @@
+<div class="container" style="margin-left: 20%;">
+
+    <div class="row">
+        <form class="col-lg-12" [formGroup]="billForm" (ngSubmit)="onSubmit()" style="margin-top: 1px;">
+
+            <h2 class="text-center" style="margin-top: 1%; margin-bottom: 5%;" *ngIf="billType === 1">مبيعات</h2>
+            <h2 class="text-center" style="margin-top: 1%; margin-bottom: 5%;" *ngIf="billType === 0">مُشتريات</h2>
+
+            <div class="row text-center">
+                <div class="custom-control form-group mt-2 col-3">
+                    <label for="cost">الإجمالي</label>
+                    <input type="number" id="cost" class="col-2 form-control mt-2 text-center" style="width: 70%; margin-left: auto; margin-right: auto;" formControlName="cost" readonly>
+                </div>
+
+                <div class="custom-control form-group mt-2 col-3">
+                    <label for="paid">المدفوع</label>
+                    <input type="number" id="paid" class="col-2 form-control mt-2 text-center" style="width: 70%; margin-left: auto; margin-right: auto;" formControlName="paid" [ngClass]="{ 'is-invalid': paid.errors &&  paid.touched}">
+                </div>
+
+                <div class="custom-control form-group mt-2 col-3">
+                    <label for="clientName">إسم العميل/المُورد</label>
+                    <input type="text" id="clientName" class="col-2 form-control mt-2 text-center" style="width: 70%; margin-left: auto; margin-right: auto;" formControlName="clientName" [ngClass]="{ 'is-invalid': clientName.errors &&  clientName.touched}">
+                </div>
+
+                <div class="custom-control form-group mt-2 col-3">
+                    <label for="discount">خصم</label>
+                    <input type="number" id="discount" class="col-2 form-control mt-2 text-center" style="width: 70%; margin-left: auto; margin-right: auto;" placeholder="(0 -100%)" formControlName="discount" [ngClass]="{ 'is-invalid': discount.errors &&  discount.touched}"
+                        (blur)="setTotal()">
+                </div>
+            </div>
+
+            <div>
+                <table id='itemTable' class="mt-10 col-6">
+
+                    <thead>
+                        <tr>
+                            <th>الصنف</th>
+                            <th>الكمية</th>
+                            <th>السعر</th>
+                            <th>إضافة</th>
+                            <th>حذف</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr *ngFor="let billItemRow of billForm.get('billItems')?.controls; let index = index;" [formGroup]="billItemRow">
+                            <td>
+                                <select id="items" formControlName="itemId" style="text-align: center; margin: auto; width: 150px; " class="form-control custom-select myInput text-center" [ngClass]="{ 'is-invalid': billItemRow.get('itemId').errors && billItemRow.get('itemId').touched}"
+                                    (change)="setInfo($event,billItemRow.get('price'));  ListChoisedAction(selectItem); " #selectItem>
+                                    <option disabled>اختر الصنف</option>
+                                    <option *ngFor="let item of items; let index = index;" [value]="item?.id">{{item?.unitNavigation.name}} {{item?.name}}</option>
+                                </select>
+                            </td>
+
+                            <td>
+                                <input type="number" id="quentity" class="form-control myInput text-center" style="width:100px;" formControlName="quentity" (blur)="setTotal()" [ngClass]="{ 'is-invalid': billItemRow.get('quentity').errors &&  billItemRow.get('quentity').touched}" minlength="1">
+                            </td>
+
+                            <td>
+                                <input type="number" id="price" class="form-control myInput text-center" style="width:87px;" formControlName="price"[ngClass]="{ 'is-invalid': billItemRow.get('price').errors &&  billItemRow.get('price').touched}" [readonly]="billType === 1">
+                            </td>
+
+                            <td>
+                                <button  type="button" style="border: none; right: 30px; background-color: none;" (click)="addNewrow();" [disabled]="billItemRow.invalid">
+                                    <i class="fas fa-plus addIcon"></i>
+                                </button>
+                            </td>
+
+                            <td>
+                                <button  type="button" style="border: none; background-color: none;" (click)="onRemoveRow(index)" [disabled]="isFirst()">
+                                    <i class="fas fa-trash-alt removeIcon"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button type="submit" class="new-button btn btn-success col-6" style="width: 100%;" [disabled]="billForm.invalid || billForm.disabled">ادخال</button>
+        </form>
+
+        <a (click)="showListRetreive(true)" class="btn btn-success mt-4" style="width: 50%;">مُراجعة الفواتير</a>
+        <a (click)="removeList()" class="btn btn-success mt-4" style="width: 43%; margin-right: 2%">إخلاء القائمة</a>
+    </div>
+</div>
+<app-retreive-bill *ngIf="openRetreive" (DeletedBills)="resetBills($event)" (showRetreive)="showListRetreive($event)" [rowData]="reteiveList"></app-retreive-bill>

@@ -1,0 +1,63 @@
+<div class="container slideInRight" style="margin-right: 170px">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12">
+
+            <h3>إضافة أصناف</h3>
+
+            <form class="row" [formGroup]="itemForm" (ngSubmit)="onSubmit()">
+                <div class="form-group mt-1 col-4">
+                    <label for="input-1">أدْخِل اسمَ الصنف:</label>
+                    <input id="input-1" type="text" class="form-control item justify-content-center" placeholder="أدخِل الصنف" formControlName="name" [ngClass]="{ 'is-invalid': name.errors && name.touched }" autocomplete="off" />
+                </div>
+                <div *ngIf="name.touched && name.errors">
+                    <div class="error" *ngIf="name.errors.required" (click)="name.reset()" style="margin-top: -10px; font-size: 13px;">
+                        قُمْ بإدخال إسم الصنف رجاءً
+                    </div>
+                    <div class="error" *ngIf="name.errors.maxlength || name.errors.minlength" (click)="name.reset()" style="margin-top: -10px; font-size: 13px;">
+                        الإسم الذي أدخلته غيرُ صحيح
+                    </div>    
+                </div>
+                <div class="error" *ngIf="itemForm.errors?.exist" (click)="name.reset()" style="margin-top: -10px; font-size: 13px;">
+                    الصنف موجود بالفعل
+                </div>
+                <div class="clearfix"></div>
+
+                <div class="form-group mt-1 col-4">
+                    <label for="input-2">سعر الصنف:</label>
+                    <input id="input-2" type="number" class="form-control item justify-content-center" placeholder="أدخِل سعر الصنف" minlength="1" formControlName="price" [ngClass]="{ 'is-invalid': price.errors && price.touched }" autocomplete="off" />
+                </div>
+                <div *ngIf="price.touched && price.errors">
+                    <div class="error" *ngIf="price.errors.required" (click)="price.reset()" style="margin-top: -10px; font-size: 13px;">
+                        قُمْ بإدخال سعر الصنف بصورة صحيحة
+                    </div>
+                    <div class="error" *ngIf="price.errors.min || price.errors.max" (click)="price.reset()" style="margin-top: -10px; font-size: 13px;">
+                        سعر الصنف غير صحيح
+                    </div>
+                </div>
+
+                <div class="form-group mt-1 col-4 input-group">
+                    <label for="input-3">وِحدة القياس:</label>
+                    <select id="input-3" class="form-control custom-select mt-1 item" formControlName="unit" style="width: 350px;  border-radius: 20px;" [ngClass]="{ 'is-invalid': unit.errors && unit.touched }">
+                        <option value="" disabled selected>أدخِل وحدة القياس</option>
+                        <option *ngFor="let unit of units" [value]="unit.id"
+                                style="padding: 10px; font-size: 20px;">{{unit.name}}</option>
+                    </select>
+
+                    <i class="fas fa-plus addIcon col-1 justify-center align-center" (click)="setOpen(true)"></i>
+                </div>
+                <div *ngIf="unit.touched && unit.errors">
+                    <div class="error" *ngIf="unit.errors.required" (click)="unit.reset()" style="margin-top: -10px; font-size: 13px;">
+                        قُمْ بإدخال وحدة القياس
+                    </div>
+                    <div class="error" *ngIf="unit.errors?.exist" (click)="unit.reset()" style="margin-top: -10px; font-size: 13px;">
+                        وحدة القياس غيرُ موجودة، فبرجاء إضافتها أولًا
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <button type="submit" [disabled]="itemForm.invalid" class="btn btn-success form-control mt-2 btn-block">حفظُ الإضافة</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-add-unit *ngIf="open" [units]="units" (openEvent)="setOpen($event)" (unitEvent)="setUnit($event)"></app-add-unit>

@@ -1,0 +1,70 @@
+* {
+    direction: rtl;
+}
+
+.modal {
+    display: block;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 5;
+    /* Sit on top */
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: hidden;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+}
+
+
+/* Modal Content/Box */
+
+.modal .modal-content {
+    background-color: #252636;
+    padding: 20px;
+    border: 1px solid #252636;
+    width: 40%;
+    /* Could be more or less, depending on screen size */
+    float: left;
+    top: 15%;
+    left: 30%;
+}
+
+.modal-content h2 {
+    color: rgb(184, 184, 184);
+    margin-bottom: 20px;
+    font-size: 26px;
+}
+
+.modal-content .icon {
+    color: rgb(184, 184, 184);
+    font-size: 18px;
+    float: right;
+    padding: 10px;
+    position: fixed;
+    width: 40px;
+}
+
+i:hover {
+    cursor: pointer;
+    opacity: .5;
+}
+
+.form-group label {
+    color: rgb(184, 184, 184);
+    margin-bottom: 10px;
+}
+
+.btn {
+    font-weight: bold;
+}
+
+.closing-btn {
+    background-color: rgb(224, 91, 91);
+    color: rgb(255, 255, 255);
+}

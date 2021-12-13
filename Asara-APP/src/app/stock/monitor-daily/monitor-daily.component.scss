@@ -1,0 +1,28 @@
+* {
+    direction: rtl;
+    box-sizing: border-box;
+}
+
+.col-md-10 h2 {
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.row {
+    animation: animation-2 0.5s ease-out 0s 1 alternate forwards;
+    margin-left: 15px;
+}
+
+.form-group button {
+    margin-bottom: 17px;
+    margin-top: 1px;
+    margin-left: 0;
+    margin-right: auto;
+    height: 42px;
+}
+
+.my-day {
+    width: 70%;
+    height: 40px;
+    margin-right: 15px;
+}

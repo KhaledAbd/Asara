@@ -1,0 +1,22 @@
+<div class="container">
+
+    <div class="row">
+
+        <div class="col-md-10">
+            <h2 class="text-center" style="direction: rtl;">جرد شهري</h2>
+
+            <form (ngSubmit)="getDayData()" class="form-group row mb-1" [formGroup]="formDay">
+                <input type="date" class="my-day form-control col-3 mb-1" [value]="getInfo().sumCost" formControlName="day" />
+                <button type="submit" class="btn btn-success col-3">عرض</button>
+            </form>
+
+            <ag-grid-angular #agGrid style="width: 800px; height: 400px" class="ag-theme-alpine" [gridOptions]="gridOptions" [columnDefs]="columnDefs" [rowData]="rowData" [enableRtl]="true">
+            </ag-grid-angular>
+            <button type="button" (click)="showDisplayBarren()" class="btn-success btn mt-2 text-center" style="width: 30%; margin-left: 35%; margin-right: 35%;">عرض</button>
+
+        </div>
+
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<app-display-barren *ngIf="openDisplay" [infoBarren]="infoBarren" (openDisplayBarrenEvent)="openDisplayBarren($event)"></app-display-barren>
