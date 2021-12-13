@@ -32,17 +32,6 @@
                           <option *ngFor="let unit of units" value="{{ unit.id }}" [selected]="unit.id == item.unitNavigation.id">{{ unit.name }}</option>
                         </select>
                     </div>
-
-                    <div class="form-group mt-2 col-10">
-                        <label for="type-item">النُوع:</label>
-                        <select id="type-item" class="form-control custom-select mt-1" formControlName="type" [ngClass]="{ 'is-invalid': type.errors && type.touched }">
-                              <option value="" disabled selected>أدخِل نوع الصنف</option>
-                              <option value="1">مبيع</option>
-                              <option value="0">مُشترى</option>
-                              <option value="">مبيع ومُشترى</option>
-                        </select>
-                    </div>
-
                     <div class="form-group text-center mt-2">
                         <button type="button" class="btn btn-info" (click)="setOpenEvent(false)">غلق</button>
                         <button type="button" class="btn btn-danger" (click)="delete()">حذف</button>

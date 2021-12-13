@@ -41,7 +41,7 @@ namespace Asara.API.Controllers
                 await dataContext.SaveChangesAsync();
                 isSaved = true;
             }
-            return Ok(new { isSaved = isSaved, item = await dataContext.FindAsync<Item>(item.Id) });
+            return Ok(new { isSaved = isSaved, item = mapper.Map<ItemDetailsDtos>(await  dataContext.Items.Include(i => i.UnitNavigation).FirstOrDefaultAsync(i => i.Id == item.Id))});
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> PutItem(int id, ItemFromDtos itemFromDtos)

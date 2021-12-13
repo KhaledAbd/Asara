@@ -51,6 +51,7 @@ export class AddItemComponent implements OnInit {
       }).subscribe(d => {
         if (d.isSaved){
           this.alertify.success('تم إضافة الصنف');
+          this.items.push(d.item);
           this.itemForm.reset();
         }
       }, e => {
