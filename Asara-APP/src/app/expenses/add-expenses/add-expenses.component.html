@@ -12,7 +12,7 @@
                 <form [formGroup]="expensesForm" (ngSubmit)="onSubmit()">
 
                     <div class="form-group mt-2 col-4">
-                        <label for="paid">دفعة الاموال</label>
+                        <label for="paid">دفعة الأموال</label>
                         <input type="number" class="form-control" formControlName="paid" placeholder="ادخل الأموال" [ngClass]="{ 'is-invalid': expensesForm.get('paid').errors && expensesForm.get('paid').touched }" />
                         <label for="reason">سبب الدفع </label>
                         <input type="text" class="form-control" formControlName="reason" placeholder="سبب الدفع" [ngClass]="{ 'is-invalid': expensesForm.get('reason').errors && expensesForm.get('reason').touched }" />

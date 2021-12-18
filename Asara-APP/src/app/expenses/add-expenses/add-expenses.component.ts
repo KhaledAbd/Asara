@@ -77,7 +77,7 @@ export class AddExpensesComponent implements OnInit {
           return moment(data.value).format('Do, h:mm a');
         }
       },
-      { field: 'userNavigation', headerName: 'وقت التسجيل', type: 'rightAligned',
+      { field: 'userNavigation', headerName: 'اسم المسجل', type: 'rightAligned',
         cellRenderer: (data) => {
           return data.value.knownAs;
         }

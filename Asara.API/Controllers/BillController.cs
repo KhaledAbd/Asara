@@ -53,7 +53,7 @@ namespace Asara.API.Controllers
                             }
                         }
                         bill.UserNavigation.Money += bill.Paid;
-                        reason= "دفعة الاموال المستله اول مره";
+                        reason= "دفعة الأموال المُستلمة أول مرة";
                     }
                     else if (bill.Type == 0)
                     {
@@ -65,7 +65,7 @@ namespace Asara.API.Controllers
                         bill.UserNavigation.Money -= bill.Paid;
                         if(bill.UserNavigation.Money < 0)
                             isNotEnough = true;
-                        reason= "دفعة الاموال المسلمة اول مره";
+                        reason= "دفعة الأموال المُستلمة أول مرة";
                         
                     }
                     var expenseses = new Expenses(){

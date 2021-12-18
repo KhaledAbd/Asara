@@ -155,9 +155,9 @@ export class AddBillComponent implements OnInit {
         if (d.bill) {
           if (d.isNotEnough){
             if (d.bill.type == 1 ){
-              this.alertifyService.error('الكمية ليست موجوده ');
+              this.alertifyService.error('الكمية ليست موجودة ');
             }else{
-              this.alertifyService.error('المال غير كافى راجع حسابك');
+              this.alertifyService.error('المال غير كافٍ راجع حسابك');
             }
           }
           if (d.isSaved) {
