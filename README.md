@@ -8,7 +8,7 @@
 ![Build Status](https://res.cloudinary.com/dbbaq55id/image/upload/v1639722740/photo_2021-12-17_08-30-15_iixu7f.jpg)
 
 
-# Developed By:
+# Developed By
 
 -[ Khaled Mohamed -Front-End Developer-](https://github.com/krypton225) responsible of HTML, css, Bootstrap.
 
@@ -17,7 +17,7 @@
 Asara is a shop management web application: 
 - This application is cross-platform. So, you can run it in windows or linux or mac.. etc.
 
-## Features Of App:
+## Features Of App
 - ✨ Use for selling and buying and record all opertion of a shop.
 - ✨ Has a poweful Authorization & Authentication.
 - ✨ Has inventory & record expenses and extra expenses and installments.
