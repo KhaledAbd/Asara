@@ -10,9 +10,9 @@
 
 # Developed By
 
--[ Khaled Mohamed -Front-End Developer-](https://github.com/krypton225) responsible of HTML, css, Bootstrap.
+-[ Khaled Mohamed -Front-End Developer-](https://github.com/krypton225) responsible of HTML, CSS, Bootstrap.
 
--[ Khaled Mohammed Elshoky -Full-Stack-](https://github.com/KhaledAbd/) -full-stack Developer- Angular & Dot Net Core FrameWork.
+-[ Khaled Mohammed Elshoky -Full-Stack-](https://github.com/KhaledAbd/) Full-Stack Developer- Angular & Dot Net Core FrameWork.
 
 Asara is a shop management web application: 
 - This application is cross-platform. So, you can run it in windows or linux or mac.. etc.
