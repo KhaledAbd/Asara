@@ -10,33 +10,32 @@
 
 # Developed By:
 
--[ Khaled Mohamed -Front-End Developer-](https://github.com/khaledmohamed138) responsible for HTML, css, Bootstrap.
+-[ Khaled Mohamed -Front-End Developer-](https://github.com/krypton225) responsible of HTML, css, Bootstrap.
 
 -[ Khaled Mohammed Elshoky -Full-Stack-](https://github.com/KhaledAbd/) -full-stack Developer- Angular & Dot Net Core FrameWork.
 
-Asara is shop management Web Application: 
-- can run in all operating system is cross-platform.
+Asara is a shop management web application: 
+- This application is cross-platform. So, you can run it in windows or linux or mac.. etc.
 
-## Features
-- use for selling and buying and record all opertion made it
-- has Authorization & authentication
-- ✨has inventory & record expenses and  extra expenses  and installments✨
+## Features Of App:
+- ✨ Use for selling and buying and record all opertion of a shop.
+- ✨ Has a poweful Authorization & Authentication.
+- ✨ Has inventory & record expenses and extra expenses and installments.
 
-> Recording data from the purchase and sale invoice, 
-> and the invoices can be retrieved, and 
-> you can use the installment system and record warehouse outputs and their 
-> movement
+> Recording data from the purchase and sale invoice and the invoices can be retrieved, and you can use the installment system and record warehouse outputs and their movement.
 ## Tech
 
-Asara uses a number of open source projects to work properly:
+Asara uses a number of open source projects and frameworks to work properly:
 
 - [AngularJS] - HTML & CSS enhanced for web apps!
 - [vsCode Editor] - awesome web-based text editor.
 - [Twitter Bootstrap] - great UI boilerplate for modern web apps.
 - [npm] - install modules.
-- [Dot Net core FrameWork] - In Back-end  
+- [Dot Net core FrameWork] - In Back-End.
 - [MYSQL] - DataBase Management System.
 - [WorkBanch] - Data Base Management tool.
+
+
 ## Installation
 
 Asara requires [npm](https://www.npmjs.com) 6+ to run.
@@ -58,7 +57,7 @@ dotnet watch run ## the data will seed automaticaly
 ### http:localhost:5000/item
 ```
 
-For production environments...
+For production environments:
 
 ```sh
 ng build --prod ----optimization=fasle  
@@ -73,10 +72,6 @@ dotnet deploy ### you can deploy it in IIs for windows & Apache for Linux
 127.0.0.1:5000 
 ```
 
-## License
-
-MIT
-
 **Free Software, Hey Yeah!**
 =======
 # Asara
@@ -84,4 +79,3 @@ AsaraApp
 
 
 Asara Shop Program
-
