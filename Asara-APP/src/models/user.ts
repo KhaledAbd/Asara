@@ -9,5 +9,5 @@ export interface User {
     city: string;
     telephone: string;
     money: number;
-    lastActive: Date;
+    folder: string;
 }

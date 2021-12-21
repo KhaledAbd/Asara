@@ -366,6 +366,9 @@ namespace Asara.API.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("folder")
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.HasIndex("NormalizedEmail")

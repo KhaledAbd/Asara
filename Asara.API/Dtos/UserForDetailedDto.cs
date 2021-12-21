@@ -12,5 +12,6 @@ namespace Asara.API.Dtos
         public string City { get; set; }
         public string Telephone { get; set; }
         public double Money {get; set;}
+        public string Folder{get; set;}
     }
 }

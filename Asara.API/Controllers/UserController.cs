@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Linq;
+using System.IO;
 
 namespace Asara.API.Controllers
 {
@@ -45,6 +46,9 @@ namespace Asara.API.Controllers
             {
                 return Unauthorized();
             }
+            if(!Directory.Exists(userForUpdateDtos.Folder)){
+                return Unauthorized();
+            }
             if ((user = await dataContext.Users.FindAsync(id)) != null)
             {
                 user.City = userForUpdateDtos.City;
@@ -52,6 +56,7 @@ namespace Asara.API.Controllers
                 user.Telephone = userForUpdateDtos.Telephone;
                 user.KnownAs = userForUpdateDtos.KnownAs;
                 user.DateOfBirth = userForUpdateDtos.DateOfBirth;
+                user.Folder = userForUpdateDtos.Folder;
                 user.NormalizedUserName = userForUpdateDtos.Username.ToUpper();
                 await dataContext.SaveChangesAsync();
                 isUpdate = true;

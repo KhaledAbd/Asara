@@ -24,11 +24,12 @@ namespace Asara.API.Controllers
             this.dataContext = dataContext;
             this.conf = conf;
         }
-        [HttpPost]
-        public async Task<IActionResult> BackUp([FromForm] string folder)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> BackUp(int id)
         {
             var isBackup = true;
             string path;
+            string folder = (await dataContext.Users.FindAsync(id)).Folder;
             List<string> messages = new List<string>();
             if (folder != null)
             {
@@ -263,9 +264,10 @@ namespace Asara.API.Controllers
             return Ok(new { isBackup = isBackup, folder = folder });
         }
 
-        [HttpPost("restore")]
-        public async Task<IActionResult> Restore([FromForm] string folder)
+        [HttpGet("restore/{id_}")]
+        public async Task<IActionResult> Restore(int id_)
         {
+            string folder = (await dataContext.Users.FindAsync(id_)).Folder;
             var path = Path.Combine(folder, "Units.csv");
             var isRestore = true;
             string line;

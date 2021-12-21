@@ -27,11 +27,9 @@ namespace Asara.API.Dtos
         [Required]
         public string Telephone { get; set; }
         public DateTime Created { get; set; }
-        public DateTime LastActive { get; set; }
         public UserForRegisterDto()
         {
             Created = DateTime.Now;
-            LastActive = DateTime.Now;
         }
     }
 }

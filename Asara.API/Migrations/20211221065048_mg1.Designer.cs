@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Asara.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20211020071700_mg1123")]
-    partial class mg1123
+    [Migration("20211221065048_mg1")]
+    partial class mg1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -174,9 +174,6 @@ namespace Asara.API.Migrations
                     b.Property<double>("Quentity")
                         .HasColumnType("REAL");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("UnitId")
                         .HasColumnType("INTEGER");
 
@@ -316,9 +313,6 @@ namespace Asara.API.Migrations
                         .IsConcurrencyToken()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Created")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("TEXT");
 
@@ -333,9 +327,6 @@ namespace Asara.API.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("KnownAs")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("LastActive")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("LockoutEnabled")
@@ -375,6 +366,9 @@ namespace Asara.API.Migrations
 
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("folder")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

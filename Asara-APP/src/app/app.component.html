@@ -18,6 +18,7 @@
                     <a [routerLink]="['account']" routerLinkActive="router-link-active">تعديل الحساب</a>
                     <hr>
                     <a [routerLink]="['programdetail']" routerLinkActive="router-link-active" style="padding: 0;">تواصل مع المُطوِّرين</a>
+                    <a (click)="restoreData()" style="padding-top: 10px;"> استرجاع البيانات</a>
                     <hr>
                     <a class="log-out" (click)='logout()'>تسجيل الخروج</a>
                 </div>

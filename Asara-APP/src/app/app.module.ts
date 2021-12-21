@@ -54,6 +54,7 @@ import { ListStockBillComponent } from './stock/list-stock-bill/list-stock-bill.
 import { DetailStockBillComponent } from './stock/detail-stock-bill/detail-stock-bill.component';
 import { RetreiveStockBillComponent } from './stock/retreive-stock-bill/retreive-stock-bill.component';
 import { DisplayBarrenComponent } from './item/display-barren/display-barren.component';
+import { PreventSaveChangesGuard } from 'src/guards/prevent-save-changes.guard';
 
 @NgModule({
   declarations: [	
@@ -115,6 +116,7 @@ import { DisplayBarrenComponent } from './item/display-barren/display-barren.com
     ShopResolver,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    PreventSaveChangesGuard
   ],
   bootstrap: [AppComponent]
 })

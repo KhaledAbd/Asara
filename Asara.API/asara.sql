@@ -26,7 +26,6 @@ CREATE TABLE IF NOT EXISTS `asara`.`AspNetUsers` (
   `DateOfBirth` DATETIME(6) NOT NULL,
   `KnownAs` varchar(256) COLLATE 'utf8mb4_0900_ai_ci' NULL DEFAULT NULL,
   `Created` DATETIME(6) NOT NULL,
-  `LastActive` DATETIME(6) NOT NULL,
   `City` varchar(256) COLLATE 'utf8mb4_0900_ai_ci' NULL DEFAULT NULL,
   `Telephone` varchar(13) COLLATE 'utf8mb4_0900_ai_ci' NULL DEFAULT NULL,
   `Money` DOUBLE NOT NULL,

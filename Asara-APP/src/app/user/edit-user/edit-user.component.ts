@@ -24,7 +24,6 @@ export class EditUserComponent implements OnInit {
       city: new FormControl('', [Validators.required]),
       telephone: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.minLength(4), Validators.maxLength(8), Validators.required]),
-      lastActive: new FormControl('')
     });
     if (this.user) {
       this.editUserform.reset({
@@ -33,7 +32,6 @@ export class EditUserComponent implements OnInit {
         city: this.user.city,
         telephone: this.user.telephone,
         username: this.user.username,
-        lastActive:  moment(this.user.lastActive).format('M-DD, a hh:mm')
       });
     }
   }

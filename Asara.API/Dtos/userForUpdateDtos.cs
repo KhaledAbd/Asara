@@ -18,5 +18,7 @@ namespace Asara.API.Dtos
         [Required]
         public string Telephone { get; set; }
         
+        public string Folder { get; set; }
+
     }
 }

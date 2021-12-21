@@ -62,6 +62,14 @@
                         <div *ngIf="f.dateOfBirth.errors.required">من فضلك أدخِل إسم المُستخدم *</div>
                     </div>
                 </div>
+                <div class="form-group mt-1 col-4">
+                    <label for="folder"> تحديد المسار :</label>
+                    <input id="folder" type="url" class="form-control item justify-content-center" formControlName="folder" [ngClass]="{'is-invalid': f.folder.errors && f.folder.touched}">
+                    <div *ngIf="f.folder.errors" class="invalid-feedback">
+                        <div *ngIf="f.folder.errors.required">من فضلك أدخِل المسار *</div>
+                        <div *ngIf="f.folder.errors.required">المسار غير صحيح</div>
+                    </div>
+                </div>
                 <div class="form-group col text-center" style="margin-top: 5px;">
                     <button type="submit" class="btn btn-success" [disabled]="editUserform.invalid || !editUserform.touched">تعديل البيانات الآن</button>
                 </div>

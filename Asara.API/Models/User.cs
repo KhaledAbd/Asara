@@ -15,6 +15,8 @@ namespace Asara.API.Models
         public string City { get; set; }
         public string Telephone { get; set; }
         public double Money {get; set;}
+
+        public string Folder {get; set;}
         public virtual ICollection<Account> Account {get; set;} 
         public virtual ICollection<UserRole> UserRoles { get; set; }
         [NotMapped]

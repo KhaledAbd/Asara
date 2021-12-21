@@ -33,7 +33,8 @@ export class MemberEditComponent implements OnInit {
       telephone: new FormControl('', [Validators.required, Validators.pattern('^[0][1][0152]{1}[0-9]*') ,
                                       Validators.minLength(9), Validators.maxLength(11)]),
       username: ['', [Validators.minLength(4), Validators.maxLength(8), Validators.required]],
-      dateOfBirth: ['', [Validators.required]]
+      dateOfBirth: ['', [Validators.required]],
+      folder: new FormControl('', [Validators.required]),
     });
     this.editUserform.reset(this.user);
     this.editUserform.get('dateOfBirth').setValue(moment(this.user.dateOfBirth).format('M/D/YYYY'));
