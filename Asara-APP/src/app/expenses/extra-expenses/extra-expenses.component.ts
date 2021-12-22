@@ -28,6 +28,7 @@ export class ExtraExpensesComponent implements OnInit {
     this.route.data.subscribe(d => {
       if (d.user) {
         this.user = d.user;
+        this.authService.setMoney(d.user.money);
       }
     });
     this.getRowNodeId = (data) => data.id;
