@@ -73,10 +73,6 @@ dotnet deploy ### you can deploy it in IIs for windows & Apache for Linux
 127.0.0.1:5000 
 ```
 
-## License
-
-MIT
-
 **Free Software, Hey Yeah!**
 =======
 # Asara
