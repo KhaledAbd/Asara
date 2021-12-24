@@ -334,7 +334,7 @@ export class AddBillComponent implements OnInit {
                 <span class="id-invoice">رقم الفاتورة: ${bill.id}</span>
             </div>
             <div class="plus-info">
-                <span class="name-casher">نوع الفاتوره: ${type}</span>
+                <span class="name-casher">نوع الفاتوره: ${type == 0 ? 'شــراء' : 'بـيع'}</span>
             </div>
         </div>
             `);
@@ -358,7 +358,7 @@ export class AddBillComponent implements OnInit {
       <tr>
           <td>${(billItem.quentity * billItem.price)}</td>
           <td>${billItem.price}</td>
-          <td>${billItem.quentity}</td>
+          <td>${billItem.quentity}</td>الإجمــالــي
           <td>${billItem.itemNavigation.unitNavigation.name} ${billItem.itemNavigation.name}</td>
       </tr>
     `);
@@ -370,7 +370,7 @@ export class AddBillComponent implements OnInit {
                         <tr>
                             <tr>
                                 <td>${bill.cost}</td>
-                                <th>المــدفـــوع</th>
+                                <th>الإجمــالــي</th>
                             </tr>
                             <tr>
                                 <td>${bill.cost - bill.paid}</td>
