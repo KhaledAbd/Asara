@@ -231,7 +231,6 @@ export class AddBillComponent implements OnInit {
   }
 
   print(bill: Bill, discount: number) {
-    const type = bill.type === 0 ? 'شراء' : 'بيع';
     window.document.write(`
         <head>
             <title>فاتورة رقم ${bill.id}</title>
@@ -330,11 +329,11 @@ export class AddBillComponent implements OnInit {
             </div>
 
             <div class="plus-info">
-                <span class="name-casher">إسم الكاشير: ${bill.userNavigation.knownAs}</span>
+                <span class="name-casher">إسم الكاشير: ${bill.userNavigation.knownAs || 'لا يوجد'}</span>
                 <span class="id-invoice">رقم الفاتورة: ${bill.id}</span>
             </div>
             <div class="plus-info">
-                <span class="name-casher">نوع الفاتوره: ${type == 0 ? 'شــراء' : 'بـيع'}</span>
+                <span class="name-casher">نوع الفاتوره: ${bill.type === 0 ? 'شراء' : 'بيع'}</span>
             </div>
         </div>
             `);
