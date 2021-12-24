@@ -100,7 +100,7 @@ namespace Asara.API.Controllers
                     {
                         BarrenItem barrenItem = barrenItems.Find(b => b.Item.Id == billItem.ItemId);
                         PriceItem priceItem = null;
-                        if ((priceItem = barrenItem.PriceItems.Find(p => p.Price == billItem.Price)) != null)
+                        if ((priceItem = barrenItem.PriceItems.Find(p => p.Price == billItem.Price && p.Type == billItem.BillNavigation.Type)) != null)
                         {
                             priceItem.Quentity += billItem.Quentity;
                         }
