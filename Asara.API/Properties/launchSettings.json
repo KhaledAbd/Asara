@@ -22,7 +22,7 @@
       "dotnetRunMessages": "true",
       "launchBrowser": false,
       "launchUrl": "/item",
-      "applicationUrl": "http://localhost:5000",
+      "applicationUrl": "http://localhost:5000", /* here change to traffic address '*' */
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
