@@ -54,30 +54,45 @@ We sought to solve much of problems, likes:
     - Dealing with the global platform [Angular](https://angular.io/) in a powerful and effective way.
     - Dealing with databases and the basics of special protocols.
 
+&nbsp;
+
 > What is the language of the app?
 - This app was built in arabic language.
 
+&nbsp;
+
+## Description
 Asara is a shop management web application: 
 - This application is cross-platform. So, you can run it in windows or linux or mac.. etc.
+
+&nbsp;
 
 ## Features Of App
 - ✨ Use for selling and buying and record all opertion of a shop.
 - ✨ Has a poweful Authorization & Authentication.
 - ✨ Has inventory & record expenses and extra expenses and installments.
 
+&nbsp;
+
 > Recording data from the purchase and sale invoice and the invoices can be retrieved, and you can use the installment system and record warehouse outputs and their movement.
+
+&nbsp;
+
 ## Tech
 
 Asara uses a number of open source projects and frameworks to work properly:
 
-- [AngularJS] - HTML & CSS enhanced for web apps!
-- [vsCode Editor] - awesome web-based text editor.
-- [Twitter Bootstrap] - great UI boilerplate for modern web apps.
-- [npm] - install modules.
-- [Dot Net core FrameWork] - In Back-End.
-- [MYSQL] - DataBase Management System.
-- [WorkBanch] - Data Base Management tool.
+- [AngularJS](https://angularjs.org/) - HTML & CSS enhanced for web apps!
+- [VS Code Editor](https://code.visualstudio.com/) - awesome web-based text editor.
+- [Twitter Bootstrap](https://getbootstrap.com/) - great UI boilerplate for modern web apps.
+- [Npm](https://www.npmjs.com/) - install modules.
+- [Dot Net core FrameWork](https://docs.microsoft.com/en-us/aspnet/core/?view=aspnetcore-6.0) - In Back-End.
+- [MySQL](https://www.mysql.com/) - DataBase Management System.
+- [WorkBanch](https://www.mysql.com/products/workbench/) - Data Base Management tool.
+- [Post Man](https://www.postman.com/) - For testing APIs in app.
+- [Git](https://git-scm.com/).
 
+&nbsp;
 
 ## Installation
 
