@@ -34,7 +34,7 @@ We sought to solve much of problems, likes:
 - Organizing the movement of withdrawals and deposits in warehouses.
 - Organizing the buying and selling movement of the shop.
 - Facilitate easy access to information for each category.
-AND MORE AND MORE!
+- AND MORE AND MORE!
 
 &nbsp;
 
